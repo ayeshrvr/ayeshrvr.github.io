@@ -1,7 +1,7 @@
-const staticCacheName = 'site-static-v1';
+/* const staticCacheName = 'site-static-v1';
 const dynamicCacheName = 'site-dynamic-v0';
 const assets = [
-  /* '/',
+  '/',
   '/index.html',
   '/js/app.js',
   '/js/ui.js',
@@ -11,7 +11,7 @@ const assets = [
   '/img/dish.png',
   'https://fonts.googleapis.com/icon?family=Material+Icons',
   'https://fonts.gstatic.com/s/materialicons/v47/flUhRq6tzZclQEJ-Vdg-IuiaDsNcIhQ8tQ.woff2',
-  '/pages/fallback.html' */
+  '/pages/fallback.html'
 ];
 
 // install event
@@ -52,4 +52,19 @@ self.addEventListener('fetch', evt => {
       });
     }).catch(() => caches.match('/pages/fallback.html'))
   );
+}); */
+
+// install event
+self.addEventListener('install', evt => {
+  console.log('service worker installed');
+});
+
+// activate event
+self.addEventListener('activate', evt => {
+  console.log('service worker activated');
+});
+
+// fetch event
+self.addEventListener('fetch', evt => {
+  console.log('fetch event', evt);
 });
