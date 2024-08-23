@@ -1,6 +1,8 @@
 var isErrorOpen = false;
 const inputs = document.querySelectorAll(".input");
 
+alert("Forgot!!");
+
 function addcl() {
   let parent = this.parentNode.parentNode;
   parent.classList.add("focus");
