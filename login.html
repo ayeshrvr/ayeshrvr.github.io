@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Luminex DC</title>
+
+    <!-- CDN Resources -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:600&display=swap" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
     <!-- materialize icons, css & js -->
     <link type="text/css" href="/css/materialize.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -14,27 +20,42 @@
     <meta name="theme-color" content="#13263d">
 </head>
 
-<body class="grey lighten-4">
+<body>
+    <img class="wave" src="img/wave.png" />
     <div class="container">
-        <h3 style="color: #13263d;">Login</h3>
-        <form>
-          <div class="row">
-            <div class="input-field">
-              <i class="material-icons prefix">account_circle</i>
-              <input id="icon_prefix" type="text" class="validate">
-              <label for="icon_prefix">Username</label>
-            </div>
-            <div class="input-field">
-              <i class="material-icons prefix">phone</i>
-              <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
-            </div>
-          </div>
-        </form>
-      </div>
-
-    <script src="/js/app.js"></script>
-    <script src="/js/ui.js"></script>
+        <div class="img">
+            <img src="img/bg.svg" />
+        </div>
+        <div class="login-content">
+            <form action="index.html">
+                <img src="img/avatar.svg" />
+                <h2 class="title">Welcome</h2>
+                <div class="input-div one">
+                    <div class="i">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="div">
+                        <h5>Username</h5>
+                        <input id="txtUser" type="text" class="input" style="text-transform: lowercase;" />
+                    </div>
+                </div>
+                <div class="input-div pass">
+                    <div class="i">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="div">
+                        <h5>Password</h5>
+                        <input id="txtPw" type="password" class="input" />
+                    </div>
+                </div>
+                <span id="logErr" style="color: red; float: left; display: none;">Login Failed!</span>
+                <a id="forgot" href="#">Forgot Password?</a>
+                <!-- <button type="button" class="btn">Login</button> -->
+                <input type="submit" class="btn" value="Login" />
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript" src="/js/login.js"></script>
 </body>
 
 </html>
