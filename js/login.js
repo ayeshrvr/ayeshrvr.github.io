@@ -42,11 +42,13 @@ function validateInput() {
 }
 
 function userLogin() {
-  naviLoading();
+  //naviLoading();
   var userName = $.trim($("#txtUser").val());
   var password = $.sha1($.trim($("#txtPw").val()));
 
-  $.ajax({
+  getSheetData();
+
+  /* $.ajax({
     url: api_core + "users/userLogin",
     type: "POST",
     data: {
@@ -66,7 +68,15 @@ function userLogin() {
       console.log(xhr);
       console.log("Details: " + desc + "\nError:" + err);
     },
-  });
+  }); */
+}
+
+async function getSheetData() {
+  const webAppUrl = 'https://script.google.com/macros/s/AKfycbzXyG1EV3bx-CA1ItF7nfUV0p6M9gFFzS-JSI5D6yCa8g9HWivYWdqm8k8dUy65jx4/exec';
+
+  const response = await fetch(webAppUrl + '?method=getData');
+  const data = await response.json();
+  alert(data);
 }
 
 function logError() {
