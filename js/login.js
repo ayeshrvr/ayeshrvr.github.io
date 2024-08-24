@@ -54,7 +54,7 @@ function userLogin() {
     sheetID: "1_eUwXCDKhnNw12IklJdkbZDcvF2Gg5UeH_lI09wKg8c",
     // sheetName is the name of the TAB in your spreadsheet (default is "Sheet1")
     sheetName: "tblUsers",
-    query: "SELECT *",
+    query: 'SELECT * WHERE A = "' + userName + '"',
     callback: sheetDataHandler
   });
 
