@@ -8,6 +8,7 @@ const getSheetData = ({ sheetID, sheetName, query, callback }) => {
       .then((res) => res.text())
       .then((response) => {
         callback(responseToObjects(response));
+        alert(res);
       });
   
     function responseToObjects(res) {

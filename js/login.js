@@ -55,7 +55,7 @@ function userLogin() {
     // sheetName is the name of the TAB in your spreadsheet (default is "Sheet1")
     sheetName: "tblUsers",
     query: "SELECT *",
-    callback: sheetDataHandler,
+    callback: sheetDataHandler
   });
 
   return false;
