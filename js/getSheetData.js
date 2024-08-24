@@ -3,12 +3,11 @@ const getSheetData = ({ sheetID, sheetName, query, callback }) => {
     const url = `${base}&sheet=${encodeURIComponent(
       sheetName
     )}&tq=${encodeURIComponent(query)}`;
-  
+  alert(url);
     fetch(url)
       .then((res) => res.text())
       .then((response) => {
         callback(responseToObjects(response));
-        alert(res);
       });
   
     function responseToObjects(res) {
