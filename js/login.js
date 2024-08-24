@@ -44,7 +44,20 @@ function userLogin() {
   var userName = $.trim($("#txtUser").val());
   var password = $.sha1($.trim($("#txtPw").val()));
 
-  alert("ready?");
+  const sheetDataHandler = (sheetData) => {
+    alert("sheet data: ", sheetData);
+    //ADD YOUR CODE TO WORK WITH sheetData ARRAY OF OBJECTS HERE
+  };
+
+  getSheetData({
+    // sheetID you can find in the URL of your spreadsheet after "spreadsheet/d/"
+    sheetID: "1_eUwXCDKhnNw12IklJdkbZDcvF2Gg5UeH_lI09wKg8c",
+    // sheetName is the name of the TAB in your spreadsheet (default is "Sheet1")
+    sheetName: "tblUsers",
+    query: "SELECT *",
+    callback: sheetDataHandler,
+  });
+
   return false;
 
   /* $.ajax({
