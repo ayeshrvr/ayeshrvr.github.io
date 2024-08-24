@@ -11,7 +11,7 @@ const getSheetData = ({ sheetID, sheetName, query, callback }) => {
     })
     .then((response) => {
         callback(responseToObjects(response));
-        alert(res);    
+        alert(response);    
       })
     .catch((error) => {
         console.error('Error fetching data:', error);
