@@ -15,6 +15,26 @@
     <link type="text/css" href="/css/login.css" rel="stylesheet">
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#13263d">
+
+    <script>
+        $(document).ready(function() {
+            //$.session.clear();
+            $("#txtUser").val("");
+            $("#txtPw").val("");
+
+            $(".btn").click(function() {
+                if (validateInput()) {
+                    userLogin();
+                }
+
+                return false;
+            });
+
+            $("#forgot").click(function() {
+                forgot();
+            });
+        });
+    </script>
 </head>
 
 <body>
