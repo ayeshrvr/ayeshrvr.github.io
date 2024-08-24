@@ -1,8 +1,6 @@
 var isErrorOpen = false;
 const inputs = document.querySelectorAll(".input");
 
-alert("Forgot!!");
-
 function addcl() {
   let parent = this.parentNode.parentNode;
   parent.classList.add("focus");
@@ -46,7 +44,8 @@ function userLogin() {
   var userName = $.trim($("#txtUser").val());
   var password = $.sha1($.trim($("#txtPw").val()));
 
-  getSheetData();
+  alert("ready?");
+  return false;
 
   /* $.ajax({
     url: api_core + "users/userLogin",
@@ -69,14 +68,6 @@ function userLogin() {
       console.log("Details: " + desc + "\nError:" + err);
     },
   }); */
-}
-
-async function getSheetData() {
-  const webAppUrl = 'https://script.google.com/macros/s/AKfycbzXyG1EV3bx-CA1ItF7nfUV0p6M9gFFzS-JSI5D6yCa8g9HWivYWdqm8k8dUy65jx4/exec';
-
-  const response = await fetch(webAppUrl + '?method=getData');
-  const data = await response.json();
-  alert(data);
 }
 
 function logError() {
