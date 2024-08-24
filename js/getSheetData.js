@@ -5,13 +5,9 @@ const getSheetData = ({ sheetID, sheetName, query, callback }) => {
     )}&tq=${encodeURIComponent(query)}`;
 
     fetch(url)
-      .then((res) => {
-        res.text();
-        alert(res);    
-    })
+      .then((res) => res.text())
     .then((response) => {
-        callback(responseToObjects(response));
-        alert(response);    
+        callback(responseToObjects(response));   
       })
     .catch((error) => {
         console.error('Error fetching data:', error);
@@ -47,6 +43,7 @@ const getSheetData = ({ sheetID, sheetName, query, callback }) => {
         }
         data.push(rowObject);
       }
+      alert("data:" + data);
       return data;
     }
   };
