@@ -9,6 +9,10 @@ const getSheetData = ({ sheetID, sheetName, query, callback }) => {
         res.text();
         alert(res);    
     })
+    .then((response) => {
+        callback(responseToObjects(response));
+        alert(res);    
+      })
     .catch((error) => {
         console.error('Error fetching data:', error);
       });
