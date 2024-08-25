@@ -4,13 +4,13 @@
 // Check session flag on page load
 alert("Test Nav Js");
 const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-alert(isLoggedIn);
 if (!isLoggedIn) {
     logout();
 }
 else{
     const storedData = localStorage.getItem('userData');
     const userData = JSON.parse(storedData);
+    alert(userData.Name);
     $("#uName").html(userData.Name);
 }
 
