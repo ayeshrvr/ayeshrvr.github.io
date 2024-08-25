@@ -45,7 +45,11 @@ function userLogin() {
   var password = $.sha1($.trim($("#txtPw").val()));
 
   const sheetDataHandler = (sheetData) => {
-    alert("sheet data: " + JSON.stringify(sheetData));
+    var userData = JSON.stringify(sheetData);
+    if(userData.length > 0)
+      alert("User Found!");
+    else
+      alert("Err!");
     //ADD YOUR CODE TO WORK WITH sheetData ARRAY OF OBJECTS HERE
   };
 
