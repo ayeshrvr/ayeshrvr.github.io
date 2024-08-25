@@ -45,6 +45,7 @@ function userLogin() {
   var password = $.sha1($.trim($("#txtPw").val()));
 
   const sheetDataHandler = (sheetData) => {
+    alert(JSON.stringify(sheetData));
     alert(sheetData.Username);
     if(sheetData.length > 0)
       alert("User Found!");
