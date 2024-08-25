@@ -49,7 +49,7 @@ function userLogin() {
     if(userData.length > 0)
       alert("User Found!");
     else
-      logError();
+      alert("Err!");
     //ADD YOUR CODE TO WORK WITH sheetData ARRAY OF OBJECTS HERE
   };
 
@@ -88,7 +88,7 @@ function userLogin() {
 }
 
 function logError() {
-  //naviLoadingHide();
+  naviLoadingHide();
   $("#logErr").css("display", " block");
   $(".one").addClass("error");
   $(".pass").addClass("error");
