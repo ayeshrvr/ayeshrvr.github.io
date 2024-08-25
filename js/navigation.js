@@ -9,6 +9,7 @@ $(document).ready(function () {
     const storedData = localStorage.getItem("userData");
     const userData = JSON.parse(storedData);
     $("#uName").text(userData.Name);
+    $("#uDesig").text(userData.Designation);
   }
 
   $("#logOut").click(function () {
