@@ -1,9 +1,8 @@
 $(document).ready(function () {
-  //naviLoading();
+  naviLoading();
 
 // Check session flag on page load
 const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-alert(isLoggedIn);
 if (!isLoggedIn) {
     logout();
 }
@@ -14,15 +13,14 @@ else{
 }
 
 $("#logOut").click(function(){
-    alert("test");
     logout();
 })
 
-  //naviLoadingHide();
+  naviLoadingHide();
 });
 
 function logout(){
-    //naviLoading();
+    naviLoading();
     localStorage.removeItem('userData');
     localStorage.removeItem('isLoggedIn');
     window.location.href = '/login.html';
