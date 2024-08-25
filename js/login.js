@@ -45,13 +45,15 @@ function userLogin() {
   var password = $.sha1($.trim($("#txtPw").val()));
 
   const sheetDataHandler = (sheetData) => {
-    alert(JSON.stringify(sheetData));
-    alert(sheetData[0].Username);
-    if(sheetData.length > 0)
-      alert("User Found!");
-    else
-    logError();
-    //ADD YOUR CODE TO WORK WITH sheetData ARRAY OF OBJECTS HERE
+    if(sheetData.length > 0){
+      const serializedData = JSON.stringify(sheetData[0]);
+      localStorage.setItem('userData', serializedData);
+      localStorage.setItem('isLoggedIn', true);
+      window.location.href = '/index.html';
+    }
+    else{
+      logError();
+    }
   };
 
   getSheetData({
