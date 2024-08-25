@@ -46,7 +46,7 @@ function userLogin() {
 
   const sheetDataHandler = (sheetData) => {
     alert(JSON.stringify(sheetData));
-    alert(sheetData.Username);
+    alert(sheetData[0].Username);
     if(sheetData.length > 0)
       alert("User Found!");
     else
