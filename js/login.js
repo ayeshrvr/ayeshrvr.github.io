@@ -59,6 +59,7 @@ function userLogin() {
     // sheetName is the name of the TAB in your spreadsheet (default is "Sheet1")
     sheetName: "tblUsers",
     query: 'SELECT * WHERE B = "' + userName.toLowerCase() + '" AND C = "'+ password +'"',
+    headers: ['Username', 'Password'],
     callback: sheetDataHandler
   });
 
