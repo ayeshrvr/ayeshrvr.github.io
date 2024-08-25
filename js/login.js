@@ -100,5 +100,5 @@ function logError() {
 
 function forgot()
 {
-	alert("Forgot Password?\nPlease contact IGT RMS Team and follow instructions!")
+	alert("Forgot Password?\nPlease contact Admin and follow instructions!")
 }
