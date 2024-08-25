@@ -1,4 +1,4 @@
-$(document).ready(function () {
+//$(document).ready(function () {
   //naviLoading();
 
 // Check session flag on page load
@@ -19,7 +19,7 @@ $("#logOut").click(function(){
 })
 
   //naviLoadingHide();
-});
+//});
 
 function logout(){
     naviLoading();
