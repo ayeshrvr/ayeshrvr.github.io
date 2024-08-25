@@ -40,7 +40,7 @@ function validateInput() {
 }
 
 function userLogin() {
-  naviLoading();
+  //naviLoading();
   var userName = $.trim($("#txtUser").val());
   var password = $.sha1($.trim($("#txtPw").val()));
 
@@ -92,7 +92,7 @@ function userLogin() {
 }
 
 function logError() {
-  naviLoadingHide();
+  //naviLoadingHide();
   $("#logErr").css("display", " block");
   $(".one").addClass("error");
   $(".pass").addClass("error");

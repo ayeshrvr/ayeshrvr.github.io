@@ -1,29 +1,28 @@
 $(document).ready(function () {
-  naviLoading();
+  //naviLoading();
 
-// Check session flag on page load
-const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-if (!isLoggedIn) {
+  // Check session flag on page load
+  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+  if (!isLoggedIn) {
     logout();
-}
-else{
-    const storedData = localStorage.getItem('userData');
+  } else {
+    const storedData = localStorage.getItem("userData");
     const userData = JSON.parse(storedData);
     $("#uName").text(userData.Name);
-}
+  }
 
-$("#logOut").click(function(){
+  $("#logOut").click(function () {
     logout();
-})
+  });
 
-  naviLoadingHide();
+  //naviLoadingHide();
 });
 
-function logout(){
-    naviLoading();
-    localStorage.removeItem('userData');
-    localStorage.removeItem('isLoggedIn');
-    window.location.href = '/login.html';
+function logout() {
+  //naviLoading();
+  localStorage.removeItem("userData");
+  localStorage.removeItem("isLoggedIn");
+  window.location.href = "/login.html";
 }
 
 function naviLoading() {
@@ -39,7 +38,6 @@ function naviLoadingHide() {
   $("#DarkWorld").remove();
   $(".spinner").remove();
 }
-
 
 /* function sessionExpired()
 {
@@ -65,7 +63,19 @@ function naviLoadingHide() {
 
 jQuery.fn.center = function () {
   this.css("position", "fixed");
-  this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop()) + "px");
-  this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + $(window).scrollLeft()) + "px");
+  this.css(
+    "top",
+    Math.max(
+      0,
+      ($(window).height() - $(this).outerHeight()) / 2 + $(window).scrollTop()
+    ) + "px"
+  );
+  this.css(
+    "left",
+    Math.max(
+      0,
+      ($(window).width() - $(this).outerWidth()) / 2 + $(window).scrollLeft()
+    ) + "px"
+  );
   return this;
 };
