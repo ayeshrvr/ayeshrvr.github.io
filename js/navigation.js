@@ -4,18 +4,27 @@ $(document).ready(function () {
 // Check session flag on page load
 const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
 if (!isLoggedIn) {
-    localStorage.removeItem('userData');
-    localStorage.removeItem('isLoggedIn')
-    window.location.href = '/login.html';
+    logout();
 }
 else{
     const storedData = localStorage.getItem('userData');
     const userData = JSON.parse(storedData);
-    $("#uName").value = userData.Name;
+    $("#uName").html(userData.Name);
 }
+
+$("#logOut").click(function(){
+    logout();
+})
 
   naviLoadingHide();
 });
+
+function logout(){
+    naviLoading();
+    localStorage.removeItem('userData');
+    localStorage.removeItem('isLoggedIn');
+    window.location.href = '/login.html';
+}
 
 function naviLoading() {
   $("body").animate({ scrollTop: 0 }, 0);
