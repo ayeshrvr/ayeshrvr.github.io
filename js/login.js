@@ -23,7 +23,7 @@ function validateInput() {
   $("#logErr").css("display", " none");
 
   var status = true;
-  var userName = $.trim($("#txtUser").val());
+  var userName = $.trim($("#txtUser").val()).toLowerCase();
   var password = $.trim($("#txtPw").val());
 
   if (userName == "") {
