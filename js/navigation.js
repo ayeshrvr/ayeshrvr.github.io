@@ -1,9 +1,9 @@
-//$(document).ready(function () {
+$(document).ready(function () {
   //naviLoading();
 
 // Check session flag on page load
-alert("Test Nav Js");
 const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+alert(isLoggedIn);
 if (!isLoggedIn) {
     logout();
 }
@@ -19,10 +19,10 @@ $("#logOut").click(function(){
 })
 
   //naviLoadingHide();
-//});
+});
 
 function logout(){
-    naviLoading();
+    //naviLoading();
     localStorage.removeItem('userData');
     localStorage.removeItem('isLoggedIn');
     window.location.href = '/login.html';
