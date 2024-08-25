@@ -45,12 +45,10 @@ function userLogin() {
   var password = $.sha1($.trim($("#txtPw").val()));
 
   const sheetDataHandler = (sheetData) => {
-    var userData = JSON.stringify(sheetData);
-    alert(sheetData[0]);
     if(sheetData.length > 0)
       alert("User Found!");
     else
-      alert("Err!");
+    logError();
     //ADD YOUR CODE TO WORK WITH sheetData ARRAY OF OBJECTS HERE
   };
 
@@ -59,7 +57,7 @@ function userLogin() {
     sheetID: "1_eUwXCDKhnNw12IklJdkbZDcvF2Gg5UeH_lI09wKg8c",
     // sheetName is the name of the TAB in your spreadsheet (default is "Sheet1")
     sheetName: "tblUsers",
-    query: 'SELECT * WHERE A = "' + userName.toLowerCase() + '" AND B = "'+ password +'"',
+    query: 'SELECT * WHERE B = "' + userName.toLowerCase() + '" AND C = "'+ password +'"',
     callback: sheetDataHandler
   });
 
@@ -89,7 +87,7 @@ function userLogin() {
 }
 
 function logError() {
-  naviLoadingHide();
+  //naviLoadingHide();
   $("#logErr").css("display", " block");
   $(".one").addClass("error");
   $(".pass").addClass("error");
