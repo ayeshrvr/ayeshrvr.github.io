@@ -1,7 +1,8 @@
 $(document).ready(function () {
-  naviLoading();
+  //naviLoading();
 
 // Check session flag on page load
+alert("Test Nav Js");
 const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
 if (!isLoggedIn) {
     logout();
@@ -17,7 +18,7 @@ $("#logOut").click(function(){
     logout();
 })
 
-  naviLoadingHide();
+  //naviLoadingHide();
 });
 
 function logout(){
@@ -41,10 +42,6 @@ function naviLoadingHide() {
   $(".spinner").remove();
 }
 
-function getUrl() {
-  var pathname = window.location.pathname;
-  return pathname;
-}
 
 /* function sessionExpired()
 {
