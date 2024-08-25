@@ -10,8 +10,7 @@ if (!isLoggedIn) {
 else{
     const storedData = localStorage.getItem('userData');
     const userData = JSON.parse(storedData);
-    alert(userData.Name);
-    $("#uName").html(userData.Name);
+    $("#uName").text(userData.Name);
 }
 
 $("#logOut").click(function(){
