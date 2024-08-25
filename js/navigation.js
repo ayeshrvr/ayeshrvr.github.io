@@ -13,6 +13,7 @@ else{
 }
 
 $("#logOut").click(function(){
+    alert("test");
     logout();
 })
 
