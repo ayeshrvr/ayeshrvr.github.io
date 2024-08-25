@@ -24,7 +24,8 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 7rem;
     padding: 0 2rem;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
   }
   
   .img {
