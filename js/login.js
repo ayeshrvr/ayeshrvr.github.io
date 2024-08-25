@@ -23,7 +23,7 @@ function validateInput() {
   $("#logErr").css("display", " none");
 
   var status = true;
-  var userName = $.trim($("#txtUser").val()).toLowerCase();
+  var userName = $.trim($("#txtUser").val());
   var password = $.trim($("#txtPw").val());
 
   if (userName == "") {
@@ -54,7 +54,7 @@ function userLogin() {
     sheetID: "1_eUwXCDKhnNw12IklJdkbZDcvF2Gg5UeH_lI09wKg8c",
     // sheetName is the name of the TAB in your spreadsheet (default is "Sheet1")
     sheetName: "tblUsers",
-    query: 'SELECT * WHERE A = "' + userName + '"',
+    query: 'SELECT * WHERE A = "' + userName.toLowerCase() + '" AND B = "'+ password +'"',
     callback: sheetDataHandler
   });
 
