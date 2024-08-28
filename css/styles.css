@@ -20,6 +20,10 @@
   nav .sidenav-trigger{
     margin: 0;
   }
+
+  .page-header{
+    font-size: 16px;
+  }
   
   /* recipe styles */
   .recipes{
