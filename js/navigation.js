@@ -38,10 +38,10 @@ var htmlText = '<div>'+
   '<li><a href="/" class="waves-effect">'+
       '<i class="material-icons">date_range</i>Attendance</a>'+
   '</li>'+
-  '<li><a href="/runningchart.html" class="waves-effect">'+
+  '<li><a href="/pages/runningchart.html" class="waves-effect">'+
       '<i class="material-icons">directions_car</i>Running Chart</a>'+
   '</li>'+
-  '<li><a href="/expenditures.html" class="waves-effect">'+
+  '<li><a href="/pages/expenditures.html" class="waves-effect">'+
       '<i class="material-icons">monetization_on</i>Expenditures</a>'+
   '</li>'+
   '<li><a href="/" class="waves-effect">'+
