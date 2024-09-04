@@ -7,17 +7,6 @@ $(document).ready(function () {
 function addRecord() {
   //naviLoading();
 
-  const sheetDataHandler = (sheetData) => {
-    /* if (sheetData.length > 0) {
-      const serializedData = JSON.stringify(sheetData[0]);
-      localStorage.setItem("userData", serializedData);
-      localStorage.setItem("isLoggedIn", true);
-      window.location.href = "/index.html";
-    } else {
-      logError();
-    } */
-  };
-
   getSheetData({
     // sheetID you can find in the URL of your spreadsheet after "spreadsheet/d/"
     sheetID: "1_eUwXCDKhnNw12IklJdkbZDcvF2Gg5UeH_lI09wKg8c",
@@ -31,5 +20,6 @@ function addRecord() {
       }
   });
 
+  alert("done");
   return false;
 }
