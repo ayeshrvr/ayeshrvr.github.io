@@ -1,12 +1,13 @@
 $(document).ready(function () {
   $("#btnAddRC").click(function () {
+    alert("just clicked");
     addRecord();
   });
 });
 
 function addRecord() {
   //naviLoading();
-
+  alert("inside fn");
   getSheetData({
     // sheetID you can find in the URL of your spreadsheet after "spreadsheet/d/"
     sheetID: "1_eUwXCDKhnNw12IklJdkbZDcvF2Gg5UeH_lI09wKg8c",
