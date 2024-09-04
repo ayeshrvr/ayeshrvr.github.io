@@ -1,3 +1,7 @@
 $(document).ready(function(){
-    alert("test");
+    
+    $("#btnAddRC").click(function(){
+        alert("test");
+    });
+
 });
