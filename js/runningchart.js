@@ -1,8 +1,9 @@
 $(document).ready(function () {
-  $("#btnAddRC").click(function () {
-    alert("just clicked");
     addRecord();
-  });
+    $("#btnAddRC").click(function () {
+        alert("just clicked");
+        addRecord();
+    });
 });
 
 function addRecord() {
