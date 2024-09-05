@@ -1,10 +1,11 @@
 $(document).ready(function () {
-    addRecord();
     $("#btnAddRC").click(function () {
         alert("just clicked");
-        addRecord();
+        //addRecord();
     });
 });
+
+//https://script.google.com/macros/s/AKfycbxKGRrQEtwdfAqDUV2v223VeJxTNZKyz6btSseOwSYeLTXx8x_qOLMx39Mn45WNu7Io/exec
 
 function addRecord() {
   //naviLoading();
