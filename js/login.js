@@ -56,39 +56,7 @@ function userLogin() {
     }
   };
 
-  getSheetData({
-    // sheetID you can find in the URL of your spreadsheet after "spreadsheet/d/"
-    sheetID: "1_eUwXCDKhnNw12IklJdkbZDcvF2Gg5UeH_lI09wKg8c",
-    // sheetName is the name of the TAB in your spreadsheet (default is "Sheet1")
-    sheetName: "tblUsers",
-    query: 'SELECT * WHERE B = "' + userName.toLowerCase() + '" AND C = "'+ password +'"',
-    headers: ['Username', 'Password'],
-    callback: sheetDataHandler
-  });
-
   return false;
-
-  /* $.ajax({
-    url: api_core + "users/userLogin",
-    type: "POST",
-    data: {
-      key: "login.host",
-      username: userName,
-      password: password,
-    },
-    success: function (data) {
-      if (data == 1)
-        window.location.href = api_core;
-      else if(data == 0)
-      window.location.href = api_core + "Users/firstTimeLogin";
-      else
-        logError();
-    },
-    error: function (xhr, desc, err) {
-      console.log(xhr);
-      console.log("Details: " + desc + "\nError:" + err);
-    },
-  }); */
 }
 
 function logError() {
