@@ -44,7 +44,35 @@ function userLogin() {
   var userName = $.trim($("#txtUser").val());
   var password = $.sha1($.trim($("#txtPw").val()));
 
-  const sheetDataHandler = (sheetData) => {
+  $.ajax({
+      // We filter the query directly in the URL: ?username=eq.VALUE&password=eq.VALUE
+      url: `${SB_URL}/rest/v1/users?username=eq.${userName}&password=eq.${password}&select=*`,
+      method: "GET",
+      headers: {
+          "apikey": SB_KEY,
+          "Authorization": `Bearer ${SB_KEY}`,
+          "Content-Type": "application/json"
+      },
+      success: function(data) {
+          // 2. Check if a matching user was found
+          if (data.length > 0) {
+              // Success: Save user info to LocalStorage so they stay logged in
+              localStorage.setItem('isLoggedIn', 'true');
+              localStorage.setItem('user', JSON.stringify(data[0]));
+              
+              alert('Welcome back!');
+              window.location.href = 'index.html'; // Redirect to your dashboard
+          } else {
+              // Failure
+              alert('Invalid username or password.');
+          }
+      },
+      error: function(err) {
+           logError();
+      }
+  });
+
+  /*const sheetDataHandler = (sheetData) => {
     if(sheetData.length > 0){
       const serializedData = JSON.stringify(sheetData[0]);
       localStorage.setItem('userData', serializedData);
@@ -54,7 +82,7 @@ function userLogin() {
     else{
       logError();
     }
-  };
+  };*/
 
   return false;
 }
