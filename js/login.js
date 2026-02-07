@@ -57,33 +57,21 @@ function userLogin() {
           // 2. Check if a matching user was found
           if (data.length > 0) {
               // Success: Save user info to LocalStorage so they stay logged in
-              localStorage.setItem('isLoggedIn', 'true');
-              localStorage.setItem('user', JSON.stringify(data[0]));
-              
-              alert('Welcome back!');
-              window.location.href = 'index.html'; // Redirect to your dashboard
+              localStorage.setItem('userData', JSON.stringify(data[0]));
+              localStorage.setItem('isLoggedIn', true);
+              window.location.href = '/index.html';
+
           } else {
               // Failure
               alert('Invalid username or password.');
+              logError();
           }
       },
       error: function(err) {
            logError();
       }
   });
-
-  /*const sheetDataHandler = (sheetData) => {
-    if(sheetData.length > 0){
-      const serializedData = JSON.stringify(sheetData[0]);
-      localStorage.setItem('userData', serializedData);
-      localStorage.setItem('isLoggedIn', true);
-      window.location.href = '/index.html';
-    }
-    else{
-      logError();
-    }
-  };*/
-
+  
   return false;
 }
 

@@ -1,2 +1,2 @@
 const SB_URL = "https://wlzggfirqntjhmedxybn.supabase.co";
-const SB_KEY = "sb_publishable_vMF3QkJsKZzsxfIQ5ce_jA_3zj60zlK";
+const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndsemdnZmlycW50amhtZWR4eWJuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzAzNjcyNTYsImV4cCI6MjA4NTk0MzI1Nn0.009xOJfRI9FNBjxHqxGjLMJ2iHqBaoQw0UzL8i0DFZs";
