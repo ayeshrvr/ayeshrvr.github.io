@@ -9,8 +9,8 @@ $(document).ready(function () {
     const storedData = localStorage.getItem("userData");
     const userData = JSON.parse(storedData);
     createSideNav();
-    $("#uName").text(userData.Name);
-    $("#uDesig").text(userData.Designation);
+    $("#uName").text(userData.name);
+    $("#uDesig").text(userData.designation);
   }
 
   $("#logOut").click(function () {
