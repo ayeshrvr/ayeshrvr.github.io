@@ -3,8 +3,8 @@
     "short_name": "Booking Manager",
     "start_url": "/index.html",
     "display": "standalone",
-    "background_color": "#17637e",
-    "theme_color": "#17637e",
+    "background_color": "#1A3263",
+    "theme_color": "#1A3263",
     "orientation": "portrait-primary",
     "icons":[
         {
