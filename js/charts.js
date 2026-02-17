@@ -38,33 +38,39 @@ for (let i = 14; i >= 0; i--) {
     labels.push(tick.toLocaleTimeString([], { hour12: false }));
 }
 
-const myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: labels, // Your 15 timestamps
-        datasets: [{
-            label: 'BTC/USDT',
-            data: supabaseData.history,
-            borderColor: '#00ff00',
-            fill: false
-        }]
-    },
-    options: {
-        responsive: true,           // Tells chart to resize with window
-        maintainAspectRatio: false, // Allows chart to change shape (portrait vs landscape)
-        scales: {
-            x: {
-                ticks: {
-                    autoSkip: true,
-                    maxTicksLimit: 6 // Prevents overlapping labels on small mobile screens
+    if (!myChart) {
+        myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels, // Your 15 timestamps
+                datasets: [{
+                    label: 'BTC/USDT',
+                    data: supabaseData.history,
+                    borderColor: '#00ff00',
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,           // Tells chart to resize with window
+                maintainAspectRatio: false, // Allows chart to change shape (portrait vs landscape)
+                scales: {
+                    x: {
+                        ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 6 // Prevents overlapping labels on small mobile screens
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: window.innerWidth > 600 // Hide legend on small mobile screens to save space
+                    }
                 }
             }
-        },
-        plugins: {
-            legend: {
-                display: window.innerWidth > 600 // Hide legend on small mobile screens to save space
-            }
-        }
+        });
+    } else {
+        myChart.data.datasets[0].data = supabaseData.history;
+        myChart.data.datasets[0].label = supabaseData.coin;
+        myChart.update();
     }
-});
 }
