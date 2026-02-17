@@ -19,7 +19,6 @@ $.ajax({
           if (data.length > 0) {
               // Success: Save user info to LocalStorage so they stay logged in
               updateChartUI(data[0].chart_data);
-              alert(JSON.stringify(data[0].chart_data));
           }
       },
       error: function(err) {
