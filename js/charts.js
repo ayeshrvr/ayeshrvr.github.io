@@ -1,27 +1,71 @@
 const ctx = document.getElementById('tradingChart').getContext('2d');
+let myChart;
 
-// Sample data from your Supabase cell
-const chartJsonString = '{"coin": "BTC/USDT", "last_updated": "13:45:01", "history": [69120.5, 69135.2, 69110.8, 69140.0, 69155.3, 69140.1, 69130.4, 69125.9, 69115.2, 69110.0, 69105.7, 69120.3, 69130.8, 69145.2, 69150.0]}';
+fetch_chart_data();
+setInterval(fetch_chart_data, 30000);
 
-const supabaseData = JSON.parse(chartJsonString);
+function fetch_chart_data() {
+$.ajax({
+      // We filter the query directly in the URL: ?username=eq.VALUE&password=eq.VALUE
+      url: `${SB_URL}/rest/v1/positions?id=eq.${1}&select=*`,
+      method: "GET",
+      headers: {
+          "apikey": SB_KEY,
+          "Authorization": `Bearer ${SB_KEY}`,
+          "Content-Type": "application/json"
+      },
+      success: function(data) {
+          // 2. Check if a matching user was found
+          if (data.length > 0) {
+              // Success: Save user info to LocalStorage so they stay logged in
+              updateChartUI(data[0].chart_data);
+              alert(JSON.stringify(data[0].chart_data));
+          }
+      },
+      error: function(err) {
+           alert("Error fetching chart data from Supabase: " + err.responseText);
+      }
+  });
+}
+
+function updateChartUI(supabaseData) {
+const endTime = new Date(supabaseData.last_updated);
+const labels = [];
+
+for (let i = 14; i >= 0; i--) {
+    // Subtract 30 seconds for each previous slot
+    const tick = new Date(endTime.getTime() - (i * 30000));
+    // Format as HH:mm:ss
+    labels.push(tick.toLocaleTimeString([], { hour12: false }));
+}
 
 const myChart = new Chart(ctx, {
-    type: 'line', // Trading type usually starts with line or candlestick
+    type: 'line',
     data: {
-        labels: Array.from({length: 15}, (_, i) => `${(14-i)*30}s ago`),
+        labels: labels, // Your 15 timestamps
         datasets: [{
-            label: supabaseData.coin,
+            label: 'BTC/USDT',
             data: supabaseData.history,
-            borderColor: '#00ff00', // Crypto green
-            tension: 0.1,
+            borderColor: '#00ff00',
             fill: false
         }]
     },
     options: {
-        responsive: true,
-        maintainAspectRatio: false,
+        responsive: true,           // Tells chart to resize with window
+        maintainAspectRatio: false, // Allows chart to change shape (portrait vs landscape)
         scales: {
-            y: { beginAtZero: false } // Crucial for crypto prices
+            x: {
+                ticks: {
+                    autoSkip: true,
+                    maxTicksLimit: 6 // Prevents overlapping labels on small mobile screens
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                display: window.innerWidth > 600 // Hide legend on small mobile screens to save space
+            }
         }
     }
 });
+}
