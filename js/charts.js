@@ -18,7 +18,7 @@ $.ajax({
           // 2. Check if a matching user was found
           if (data.length > 0) {
               // Success: Save user info to LocalStorage so they stay logged in
-              updateChartUI(data[0].chart_data);
+              updateChartUI(data[0]);
           }
       },
       error: function(err) {
@@ -28,7 +28,7 @@ $.ajax({
 }
 
 function updateChartUI(supabaseData) {
-const endTime = new Date(supabaseData.last_updated);
+const endTime = new Date(supabaseData.chart_data.last_updated);
 const labels = [];
 
 for (let i = 14; i >= 0; i--) {
@@ -45,7 +45,7 @@ for (let i = 14; i >= 0; i--) {
                 labels: labels, // Your 15 timestamps
                 datasets: [{
                     label: 'BTC/USDT',
-                    data: supabaseData.history,
+                    data: supabaseData.chart_data.history,
                     borderColor: '#00ff00',
                     fill: false
                 }]
@@ -69,10 +69,10 @@ for (let i = 14; i >= 0; i--) {
             }
         });
     } else {
-        myChart.data.datasets[0].data = supabaseData.history;
-        myChart.data.datasets[0].label = supabaseData.coin;
+        myChart.data.datasets[0].data = supabaseData.chart_data.history;
+        myChart.data.datasets[0].label = supabaseData.chart_data.coin;
         myChart.update();
     }
-    alert(supabaseData.msg);
-    $("#msg").text(supabaseData.msg); // Update message below chart
+    alert(supabaseData.chart_data.msg);
+    $("#msg").text(supabaseData.chart_data.msg); // Update message below chart
 }
