@@ -73,5 +73,5 @@ for (let i = 14; i >= 0; i--) {
         myChart.data.datasets[0].label = supabaseData.coin;
         myChart.update();
     }
-    $("#msg").text(supabaseData.msg || ""); // Update message below chart
+    $("#msg").text(supabaseData.msg); // Update message below chart
 }
