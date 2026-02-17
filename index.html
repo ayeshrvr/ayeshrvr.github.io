@@ -12,6 +12,7 @@
     <link type="text/css" href="/css/loader.css" rel="stylesheet">
     <script type="text/javascript" src="/js/materialize.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#13263d">
 </head>
@@ -32,15 +33,9 @@
 
    <div class="card-panel white blocks" style="padding: 10px 15px;">
         <div class="date-container valign-wrapper">
-            <button class="btn-small waves-effect waves-light custom-nav-btn">
-                <i class="material-icons">chevron_left</i>
-            </button>
-
-            <h5 class="center-align date-text">February 07, 2026</h5>
-
-            <button class="btn-small waves-effect waves-light custom-nav-btn">
-                <i class="material-icons">chevron_right</i>
-            </button>
+            <div style="width: auto; height: 300px;">
+                <canvas id="tradingChart"></canvas>
+            </div>
         </div>
     </div>
 
@@ -86,6 +81,7 @@
     <script src="/js/ui.js"></script>
     <script src="/js/navigation.js"></script>
     <script src="/js/loader.js"></script>
+    <script src="/js/charts.js"></script>
 </body>
 
 </html>
