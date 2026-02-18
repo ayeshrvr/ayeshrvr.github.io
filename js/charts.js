@@ -31,7 +31,7 @@ function updateChartUI(supabaseData) {
 const endTime = new Date(supabaseData.chart_data.last_updated);
 const labels = [];
 
-for (let i = 14; i >= 0; i--) {
+for (let i = 59; i >= 0; i--) {
     // Subtract 30 seconds for each previous slot
     const tick = new Date(endTime.getTime() - (i * 30000));
     // Format as HH:mm:ss
