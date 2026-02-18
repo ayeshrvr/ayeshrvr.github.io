@@ -32,32 +32,38 @@ var htmlText = '<div>'+
       '<li><a id="uName" class="subheader" style="color: #FF8816;"></a></li>'+
       '<li><a id="uDesig" class="subheader" style="margin-top: -25px; font-size: 11px;"></a></li>'+
   '</div>'+
-  '<li><a href="/" class="waves-effect">'+
-      '<i class="material-icons">home</i>Home</a>'+
+  '<li><a href="/" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
+      '<i class="material-icons"  style="height: 40px !important; line-height: 40px !important;">home</i>Home</a>'+
   '</li>'+
-  '<li><a href="/" class="waves-effect">'+
-      '<i class="material-icons">date_range</i>Attendance</a>'+
+  '<li><a href="/" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
+      '<i class="material-icons"  style="height: 40px !important; line-height: 40px !important;">assessment</i>Positions</a>'+
   '</li>'+
-  '<li><a href="/pages/runningchart.html" class="waves-effect">'+
-      '<i class="material-icons">directions_car</i>Running Chart</a>'+
+  '<li><a href="/pages/runningchart.html" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
+      '<i class="material-icons"  style="height: 40px !important; line-height: 40px !important;">history</i>Trade History</a>'+
   '</li>'+
-  '<li><a href="/pages/expenditures.html" class="waves-effect">'+
-      '<i class="material-icons">monetization_on</i>Expenditures</a>'+
+  '<li><a href="/pages/expenditures.html" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
+      '<i class="material-icons"  style="height: 40px !important; line-height: 40px !important; ">monetization_on</i>Market Scanner</a>'+
   '</li>'+
-  '<li><a href="/" class="waves-effect">'+
-      '<i class="material-icons">straighten</i>Project Progress</a>'+
+  '<li><a href="/" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
+      '<i class="material-icons" style="height: 40px !important; line-height: 40px !important;">blur_on</i>Analytics</a>'+
+  '</li>'+
+  '<li><a href="/" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
+      '<i class="material-icons" style="height: 40px !important; line-height: 40px !important;">format_align_center</i>Logs</a>'+
+  '</li>'+
+  '<li><a href="/" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
+      '<i class="material-icons" style="height: 40px !important; line-height: 40px !important;  ">settings</i>Configurations</a>'+
   '</li>'+
   '<li>'+
       '<div class="divider"></div>'+
   '</li>'+
-  '<li><a href="/" class="waves-effect">'+
-          '<i class="material-icons">person_pin</i>Profile</a>'+
+  '<li><a href="/" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
+          '<i class="material-icons" style="height: 40px !important; line-height: 40px !important;">person_pin</i>Profile</a>'+
   '</li>'+
-  '<li><a href="/" class="waves-effect">'+
-      '<i class="material-icons">info</i>About</a>'+
+  '<li><a href="/" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
+      '<i class="material-icons" style="height: 40px !important; line-height: 40px !important;">info</i>About</a>'+
   '</li>'+
-  '<li><a id="logOut" href="#" class="waves-effect">'+
-      '<i class="material-icons">lock</i>Logout</a>'+
+  '<li><a id="logOut" href="#" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
+      '<i class="material-icons" style="height: 40px !important; line-height: 40px !important;">lock</i>Logout</a>'+
   '</li>';
   
   $("#side-menu").html(htmlText);
