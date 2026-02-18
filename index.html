@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#1A3263">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Booking Manager</title>
+    <title>Bot Manager</title>
     <!-- materialize icons, css & js -->
     <link type="text/css" href="/css/materialize.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -41,8 +41,15 @@
             <div class="col s12 m8 offset-m2">
                 <div class="card-panel white z-depth-1 center-align" style="border-radius: 12px; padding: 15px;">
                     <div id="status-container" class="valign-wrapper justify-center" style="display: inline-flex;">
-                        <span id="status-dot" class="btn-floating btn-small waves-effect waves-light green pulse" style="width: 12px; height: 12px; margin-right: 10px;"></span>
-                        <span class="fw-bold" id="bot-status" style="font-weight: 700; letter-spacing: 1px;">BOT RUNNING</span>
+                        <div class="left">
+                            <span id="status-dot" class="btn-floating btn-small waves-effect waves-light green pulse" style="width: 12px; height: 12px; margin-right: 10px;"></span>
+                            <span class="fw-bold" id="bot-status" style="font-weight: 700; letter-spacing: 1px;">&nbsp;BOT RUNNING</span>
+                        </div>
+                        <span class="mx-3 grey-text" style="font-size: 0.8rem; margin: 0 10px;"> | </span>
+                        <div class="right">
+                            <span class="fw-bold" id="bot-status" style="font-weight: 700; letter-spacing: 1px;">TRADING PAUSE&nbsp;&nbsp;</span>
+                            <span id="status-dot" class="btn-floating btn-small waves-effect waves-light orange pulse" style="width: 12px; height: 12px; margin-right: 10px;"></span>
+                        </div>
                     </div>
                     <div class="grey-text" style="font-size: 0.8rem; margin-top: 5px;" id="last-update">Updated: Just now</div>
                 </div>
