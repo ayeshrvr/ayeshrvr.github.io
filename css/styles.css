@@ -1,8 +1,8 @@
 /* colours */
 :root{
     --primary: #1A3263;
-    --secondary: #5F4B66;
-    --title: #FF8816;
+    --secondary: #547792;
+    --title: #FAB95B;
   }
   
   /* layout styles */
@@ -19,7 +19,18 @@
   }
   nav .sidenav-trigger{
     margin: 0;
+
   }
+
+  /* Target the icon inside the sidenav-trigger */
+nav .sidenav-trigger i {
+    color: #E8E2DB !important; /* Change this hex code to your preferred color */
+}
+
+/* Optional: Change color when hovering */
+.sidenav-trigger i:hover {
+    color: #FAB95B !important; /* Changes to orange on hover */
+}
 
   .page-header{
     font-size: 16px;
