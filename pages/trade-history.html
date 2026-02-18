@@ -1,0 +1,165 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Booking Manager</title>
+    <!-- materialize icons, css & js -->
+    <link type="text/css" href="/css/materialize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" href="/css/styles.css" rel="stylesheet">
+    <link type="text/css" href="/css/loader.css" rel="stylesheet">
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#13263d">
+</head>
+
+<body class="grey lighten-4">
+    <!-- top nav -->
+    <nav class="z-depth-0">
+        <div class="nav-wrapper container">
+            <a href="/">BOT<span style="font-size: 20px;"> Manager</span></a>
+            <span class="right grey-text text-darken-1">
+                <i class="material-icons sidenav-trigger" style="cursor: pointer;" data-target="side-menu">menu</i>
+            </span>
+        </div>
+    </nav>
+
+    <!-- side nav -->
+    <ul id="side-menu" class="sidenav side-menu"></ul>
+
+    <!-- page content -->
+    <div id="history-tab" class="container container-tab">
+      <div class="row" style="margin-top: 20px; margin-bottom: 0;">
+          <div class="col s10 m10">
+              <div class="input-field history-filter-box">
+                  <i class="material-icons prefix" style="font-size: 1.8rem;">date_range</i>
+                  <input type="text" id="history-date-range" class="datepicker" placeholder="Select Date Range">
+              </div>
+          </div>
+          <div class="col s2 m2 right-align">
+              <a href="#!" class="btn-floating btn-flat waves-effect waves-light mt-10" onclick="exportCSV()">
+                  <i class="material-icons grey-text text-darken-3">file_download</i>
+              </a>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col s12">
+              <div class="card white z-depth-1" style="border-radius: 15px;">
+                  <div class="card-content">
+                      <span class="card-title strong" style="font-size: 1.2rem; color: #444;">Equity Growth (Selected Period)</span>
+                      <div class="chart-container" style="position: relative; height:300px;">
+                          <canvas id="equityChart"></canvas>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <div class="col s12">
+              <ul class="collapsible z-depth-0" style="border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden;">
+                  <li class="grey lighten-4 hide-on-small-only">
+                      <div class="collapsible-header no-pointer" style="font-weight: 700; background: #f5f5f5; border-bottom: 1px solid #ddd;">
+                          <div class="col s3">Date/Time</div>
+                          <div class="col s3">Asset</div>
+                          <div class="col s3">P&L (%)</div>
+                          <div class="col s3 right-align">Status</div>
+                      </div>
+                  </li>
+
+                  <li>
+                      <div class="collapsible-header">
+                          <div class="col s4 m3 small grey-text text-darken-2">Feb 18, 14:20</div>
+                          <div class="col s4 m3"><b class="blue-grey-text text-darken-4">BTC/USDT</b></div>
+                          <div class="col s4 m3 green-text text-darken-1 strong">+$142.50 (+2.1%)</div>
+                          <div class="col m3 right-align hide-on-small-only">
+                              <span class="new badge green accent-4 white-text" data-badge-caption="WIN"></span>
+                          </div>
+                      </div>
+                      <div class="collapsible-body white">
+                          <div class="row" style="margin-bottom:0;">
+                              <div class="col s6 m3"><b>Entry:</b> 67,200</div>
+                              <div class="col s6 m3"><b>Exit:</b> 68,500</div>
+                              <div class="col s6 m3"><b>Size:</b> 0.05 BTC</div>
+                              <div class="col s6 m3"><b>Fee:</b> $1.20</div>
+                          </div>
+                      </div>
+                  </li>
+
+                  <li>
+                      <div class="collapsible-header">
+                          <div class="col s4 m3 small grey-text text-darken-2">Feb 17, 09:15</div>
+                          <div class="col s4 m3"><b class="blue-grey-text text-darken-4">ETH/USDT</b></div>
+                          <div class="col s4 m3 red-text strong">-$45.00 (-1.5%)</div>
+                          <div class="col m3 right-align hide-on-small-only">
+                              <span class="new badge red darken-1 white-text" data-badge-caption="LOSS"></span>
+                          </div>
+                      </div>
+                      <div class="collapsible-body white">
+                          <div class="row" style="margin-bottom:0;">
+                              <div class="col s6 m3"><b>Entry:</b> 2,450</div>
+                              <div class="col s6 m3"><b>Exit:</b> 2,410</div>
+                              <div class="col s6 m3"><b>Size:</b> 1.50 ETH</div>
+                              <div class="col s6 m3"><b>Fee:</b> $0.85</div>
+                          </div>
+                      </div>
+                  </li>
+
+                  <li>
+                      <div class="collapsible-header">
+                          <div class="col s4 m3 small grey-text text-darken-2">Feb 16, 21:05</div>
+                          <div class="col s4 m3"><b class="blue-grey-text text-darken-4">SOL/USDT</b></div>
+                          <div class="col s4 m3 orange-text text-darken-2 strong">+$2.10 (+0.05%)</div>
+                          <div class="col m3 right-align hide-on-small-only">
+                              <span class="new badge orange darken-2 white-text" data-badge-caption="B.E."></span>
+                          </div>
+                      </div>
+                      <div class="collapsible-body white">
+                          <div class="row" style="margin-bottom:0;">
+                              <div class="col s6 m3"><b>Entry:</b> 112.50</div>
+                              <div class="col s6 m3"><b>Exit:</b> 112.55</div>
+                              <div class="col s6 m3"><b>Size:</b> 25 SOL</div>
+                              <div class="col s6 m3"><b>Fee:</b> $0.15</div>
+                          </div>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      
+      </div>
+
+
+    <!-- add recipe side nav -->
+    <div id="side-form" class="sidenav side-form">
+        <form class="add-recipe container section">
+            <h6>New Recipe</h6>
+            <div class="divider"></div>
+            <div class="input-field">
+                <input placeholder="e.g. Ninja soup" id="title" type="text" class="validate">
+                <label for="title">Recipe Title</label>
+            </div>
+            <div class="input-field">
+                <input placeholder="e.g. Tofu, mushroom, garlic" id="ingredients" type="text" class="validate">
+                <label for="ingredients">Ingredients</label>
+            </div>
+            <div class="input-field center">
+                <button class="btn-small">Add</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/ui.js"></script>
+    <script type="text/javascript" src="/js/dbConnect.js"></script>
+    <script src="/js/navigation.js"></script>
+    <script src="/js/loader.js"></script>
+    <script src="/js/charts.js"></script>
+</body>
+
+</html>

@@ -202,3 +202,62 @@
         font-size: 1.2rem !important;
     }
 }
+
+/* Styling the Collapsible as a Table Replacement */
+.collapsible-header {
+    border-bottom: 1px solid #eee !important;
+    padding: 15px !important;
+    align-items: center;
+}
+
+.collapsible-body {
+    padding: 20px !important;
+    line-height: 1.6;
+}
+
+.no-pointer {
+    pointer-events: none;
+}
+
+/* Make sure the export button aligns well */
+.btn-flat i {
+    margin-right: 5px !important;
+}
+
+/* Adjusting labels for Materialize select */
+.input-field label {
+    font-size: 0.9rem;
+}
+
+/* Align the input field exactly with the card below */
+.history-filter-box {
+    margin: 0 !important;
+    display: flex;
+    align-items: center;
+}
+
+/* Fix prefix icon positioning to be flush with left margin */
+.history-filter-box .prefix {
+    position: relative !important;
+    width: 3rem !important;
+    font-size: 2rem !important;
+    transition: color .2s;
+    top: 10px;
+}
+
+/* The actual text input */
+.history-filter-box input {
+    margin-left: 0 !important;
+    width: calc(100% - 3rem) !important;
+    border-bottom: 1px solid #e0e0e0 !important;
+    font-size: 1.1rem !important;
+}
+
+.history-filter-box input:focus {
+    border-bottom: 2px solid #ff9800 !important; /* Orange to match BOT MANAGER logo */
+    box-shadow: none !important;
+}
+
+.mt-10 {
+    margin-top: 10px !important;
+}
