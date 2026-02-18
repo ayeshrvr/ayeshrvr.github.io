@@ -272,3 +272,41 @@ nav .sidenav-trigger i {
 .mt-10 {
     margin-top: 10px !important;
 }
+
+.status-header-row {
+    display: flex;
+    justify-content: space-between; /* This pushes one left, one right */
+    align-items: center;
+    width: 100%;
+}
+
+.status-item-left, .status-item-right {
+    display: flex;
+    align-items: center;
+}
+
+.status-text {
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+/* The small indicator dot */
+.status-dot {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+/* Materialize pulse effect refinement */
+.status-dot.pulse {
+    box-shadow: 0 0 0 rgba(76, 175, 80, 0.4);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(76, 175, 80, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0); }
+}

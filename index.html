@@ -37,12 +37,22 @@
     <div class="container">
         <div class="row" style="margin-top: 20px;">
             <div class="col s12 m8 offset-m2">
-                <div class="card-panel white z-depth-1 center-align" style="border-radius: 12px; padding: 15px;">
-                    <div id="status-container" class="valign-wrapper justify-center" style="display: inline-flex;">
-                        <span id="status-dot" class="btn-floating btn-small waves-effect waves-light green pulse" style="width: 12px; height: 12px; margin-right: 10px;"></span>
-                        <span class="fw-bold" id="bot-status" style="font-weight: 700; letter-spacing: 1px;">BOT RUNNING</span>
+                <div class="card-panel white z-depth-1" style="border-radius: 12px; padding: 15px;">
+                    <div class="status-header-row">
+                        <div class="status-item-left">
+                            <span class="status-dot green pulse"></span>
+                            <span class="status-text fw-bold">BOT RUNNING</span>
+                        </div>
+
+                        <div class="status-item-right">
+                            <span class="status-text fw-bold orange-text">TRADING ON</span>
+                            <i class="material-icons tiny orange-text" style="margin-left: 5px;">sensors</i>
+                        </div>
                     </div>
-                    <div class="grey-text" style="font-size: 0.8rem; margin-top: 5px;" id="last-update">Updated: Just now</div>
+
+                    <div class="center-align grey-text" style="font-size: 0.8rem; margin-top: 10px;">
+                        Updated: <span id="last-update-time">Just now</span>
+                    </div>
                 </div>
             </div>
         </div>
