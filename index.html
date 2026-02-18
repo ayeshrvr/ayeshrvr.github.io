@@ -31,15 +31,48 @@
     <!-- side nav -->
     <ul id="side-menu" class="sidenav side-menu"></ul>
 
-   <div class="card-panel white blocks" style="padding: 10px 15px;">
-        <div class="date-container valign-wrapper">
-            <div class="chart-container" style="position: relative; height:40vh; width:100vw;">
-                <canvas id="tradingChart"></canvas>
-            </div>
-    </div>
     <div class="card-panel white blocks" style="padding: 10px 15px;">
-        <div class="container valign-wrapper">
-            <span id="msg"></span>
+        <div class="dashboard-container">
+            <div class="header-status card shadow-sm">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="status-indicator" id="status-dot"></span>
+                        <span class="fw-bold text-uppercase" id="bot-status">BOT RUNNING</span>
+                    </div>
+                    <small class="text-muted" id="last-update">Updated: Just now</small>
+                </div>
+            </div>
+
+            <div class="balance-card card text-center p-4 my-3 bg-dark text-white shadow">
+                <h6 class="text-uppercase text-secondary">Current Balance</h6>
+                <h2 class="display-5 fw-bold" id="current-balance">$0.00</h2>
+                <div class="pnl-chip mt-2" id="today-pnl">
+                    +$0.00 (0.00%)
+                </div>
+            </div>
+
+            <div class="row g-3 mb-3">
+                <div class="col-6">
+                    <div class="card p-3 shadow-sm h-100">
+                        <small class="text-muted text-uppercase d-block">Win Rate</small>
+                        <span class="fs-4 fw-bold" id="win-rate">0%</span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card p-3 shadow-sm h-100">
+                        <small class="text-muted text-uppercase d-block">Open Positions</small>
+                        <span class="fs-4 fw-bold" id="open-positions">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-bar card p-3 shadow-lg sticky-bottom">
+                <div class="d-flex gap-2">
+                    <button class="btn btn-success flex-grow-1 py-3" id="btn-start">START</button>
+                    <button class="btn btn-warning flex-grow-1 py-3" id="btn-pause">PAUSE</button>
+                    <button class="btn btn-danger flex-grow-1 py-3" id="btn-stop">STOP</button>
+                </div>
+            </div>
         </div>
     </div>
 

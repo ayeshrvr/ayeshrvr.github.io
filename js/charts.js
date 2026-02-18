@@ -53,11 +53,19 @@ for (let i = 59; i >= 0; i--) {
             options: {
                 responsive: true,           // Tells chart to resize with window
                 maintainAspectRatio: false, // Allows chart to change shape (portrait vs landscape)
+                layout: {
+                    padding: {
+                        left: 5,
+                        right: 5,
+                        top: 0,
+                        bottom: 0
+                    }
+                },
                 scales: {
                     x: {
                         ticks: {
                             autoSkip: true,
-                            maxTicksLimit: 6 // Prevents overlapping labels on small mobile screens
+                            maxTicksLimit: 8 // Prevents overlapping labels on small mobile screens
                         }
                     }
                 },
