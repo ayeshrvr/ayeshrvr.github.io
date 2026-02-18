@@ -214,6 +214,11 @@ nav .sidenav-trigger i {
     }
 }
 
+/* Reduce space between grid rows */
+.row {
+    margin-bottom: 5px !important; /* Materialize default is 20px */
+}
+
 /* Styling the Collapsible as a Table Replacement */
 .collapsible-header {
     border-bottom: 1px solid #eee !important;
