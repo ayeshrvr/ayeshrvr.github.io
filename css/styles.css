@@ -111,32 +111,25 @@
     box-sizing: border-box; /* Ensures padding doesn't add to total width */
 }
 
-body { background-color: #f4f7f6; font-family: 'Inter', sans-serif; }
-
-.header-status { border-radius: 0 0 15px 15px; border: none; padding: 12px 20px; }
-
-.status-indicator {
-    height: 10px; width: 10px; background-color: #28a745;
-    border-radius: 50%; display: inline-block; margin-right: 8px;
-    box-shadow: 0 0 8px #28a745;
+/* Ensure the "Bot Status" dot and text align perfectly */
+.justify-center {
+    justify-content: center;
 }
 
-.balance-card { border-radius: 20px; border: none; }
-
-.pnl-chip {
-    background: rgba(40, 167, 69, 0.2);
-    color: #2ecc71;
-    padding: 4px 12px;
-    border-radius: 50px;
-    display: inline-block;
-    font-weight: 600;
+/* Make buttons look better on small screens */
+@media only screen and (max-width: 600px) {
+    .btn-large {
+        padding: 0 5px;
+        font-size: 0.8rem;
+    }
+    h2 { font-size: 2.5rem; }
 }
 
-/* Fix for mobile view to prevent the chart overflow issue we discussed */
-.dashboard-container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 0 15px 100px 15px; /* Bottom padding so button bar doesn't hide info */
+/* Custom shadow to make it look modern (Soft UI) */
+.card, .card-panel {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05) !important;
 }
 
-.action-bar { border-radius: 20px 20px 0 0; bottom: 0; left: 0; right: 0; }
+.no-shadow {
+    box-shadow: none !important;
+}

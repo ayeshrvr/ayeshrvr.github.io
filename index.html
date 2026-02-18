@@ -21,7 +21,7 @@
     <!-- top nav -->
     <nav class="z-depth-0">
         <div class="nav-wrapper container">
-            <a href="/">Booking<span style="font-size: 20px;"> Manager</span></a>
+            <a href="/">BOT<span style="font-size: 20px;"> Manager</span></a>
             <span class="right grey-text text-darken-1">
                 <i class="material-icons sidenav-trigger" style="cursor: pointer;" data-target="side-menu">menu</i>
             </span>
@@ -31,46 +31,60 @@
     <!-- side nav -->
     <ul id="side-menu" class="sidenav side-menu"></ul>
 
-    <div class="card-panel white blocks" style="padding: 10px 15px;">
-        <div class="dashboard-container">
-            <div class="header-status card shadow-sm">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <span class="status-indicator" id="status-dot"></span>
-                        <span class="fw-bold text-uppercase" id="bot-status">BOT RUNNING</span>
+    <div class="container">
+        <div class="row" style="margin-top: 20px;">
+            <div class="col s12 m8 offset-m2">
+                <div class="card-panel white z-depth-1 center-align" style="border-radius: 12px; padding: 15px;">
+                    <div id="status-container" class="valign-wrapper justify-center" style="display: inline-flex;">
+                        <span id="status-dot" class="btn-floating btn-small waves-effect waves-light green pulse" style="width: 12px; height: 12px; margin-right: 10px;"></span>
+                        <span class="fw-bold" id="bot-status" style="font-weight: 700; letter-spacing: 1px;">BOT RUNNING</span>
                     </div>
-                    <small class="text-muted" id="last-update">Updated: Just now</small>
+                    <div class="grey-text" style="font-size: 0.8rem; margin-top: 5px;" id="last-update">Updated: Just now</div>
                 </div>
             </div>
+        </div>
 
-            <div class="balance-card card text-center p-4 my-3 bg-dark text-white shadow">
-                <h6 class="text-uppercase text-secondary">Current Balance</h6>
-                <h2 class="display-5 fw-bold" id="current-balance">$0.00</h2>
-                <div class="pnl-chip mt-2" id="today-pnl">
-                    +$0.00 (0.00%)
-                </div>
-            </div>
-
-            <div class="row g-3 mb-3">
-                <div class="col-6">
-                    <div class="card p-3 shadow-sm h-100">
-                        <small class="text-muted text-uppercase d-block">Win Rate</small>
-                        <span class="fs-4 fw-bold" id="win-rate">0%</span>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card p-3 shadow-sm h-100">
-                        <small class="text-muted text-uppercase d-block">Open Positions</small>
-                        <span class="fs-4 fw-bold" id="open-positions">0</span>
+        <div class="row">
+            <div class="col s12 m8 offset-m2">
+                <div class="card blue-grey darken-4 white-text center-align" style="border-radius: 20px;">
+                    <div class="card-content">
+                        <span class="card-title grey-text text-lighten-1" style="font-size: 0.9rem; text-transform: uppercase;">Current Balance</span>
+                        <h2 style="margin: 10px 0; font-weight: 700;" id="current-balance">$0.00</h2>
+                        <div id="today-pnl" class="green-text text-accent-3" style="font-weight: 600; font-size: 1.2rem;">
+                            +$0.00 (0.00%)
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="action-bar card p-3 shadow-lg sticky-bottom">
-                <div class="d-flex gap-2">
-                    <button class="btn btn-success flex-grow-1 py-3" id="btn-start">START</button>
-                    <button class="btn btn-warning flex-grow-1 py-3" id="btn-pause">PAUSE</button>
-                    <button class="btn btn-danger flex-grow-1 py-3" id="btn-stop">STOP</button>
+        <div class="row">
+            <div class="col s6 m4 offset-m2">
+                <div class="card white center-align" style="border-radius: 15px;">
+                    <div class="card-content" style="padding: 15px;">
+                        <p class="grey-text text-darken-1" style="font-size: 0.8rem;">WIN RATE</p>
+                        <h5 id="win-rate" style="font-weight: 700; margin: 5px 0;">0%</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col s6 m4">
+                <div class="card white center-align" style="border-radius: 15px;">
+                    <div class="card-content" style="padding: 15px;">
+                        <p class="grey-text text-darken-1" style="font-size: 0.8rem;">POSITIONS</p>
+                        <h5 id="open-positions" style="font-weight: 700; margin: 5px 0;">0</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m8 offset-m2">
+                <div class="card-panel transparent no-shadow center-align">
+                    <div class="row">
+                        <div class="col s4"><button class="btn-large waves-effect waves-light green full-width" id="btn-start" style="width: 100%; border-radius: 8px;">START</button></div>
+                        <div class="col s4"><button class="btn-large waves-effect waves-light orange darken-2 full-width" id="btn-pause" style="width: 100%; border-radius: 8px;">PAUSE</button></div>
+                        <div class="col s4"><button class="btn-large waves-effect waves-light red full-width" id="btn-stop" style="width: 100%; border-radius: 8px;">STOP</button></div>
+                    </div>
                 </div>
             </div>
         </div>
