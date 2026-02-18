@@ -81,16 +81,65 @@
         </div>
 
         <div class="row">
-            <div class="col s12 m8 offset-m2">
-                <div class="card-panel transparent no-shadow center-align">
-                    <div class="row">
-                        <div class="col s4"><button class="btn-large waves-effect waves-light green full-width" id="btn-start" style="width: 100%; border-radius: 8px;">START</button></div>
-                        <div class="col s4"><button class="btn-large waves-effect waves-light orange darken-2 full-width" id="btn-pause" style="width: 100%; border-radius: 8px;">PAUSE</button></div>
-                        <div class="col s4"><button class="btn-large waves-effect waves-light red full-width" id="btn-stop" style="width: 100%; border-radius: 8px;">STOP</button></div>
+            <div class="col s12">
+                <div class="card white z-depth-1" style="border-radius: 15px; overflow: hidden;">
+                    <div class="card-content" style="padding: 0;">
+                        <div style="padding: 15px 20px;">
+                            <span class="card-title strong" style="font-size: 1.1rem; margin: 0;">
+                                Live Positions
+                                <a class="waves-effect waves-light btn-small right"><i class="material-icons left">visibility</i>View Details</a>
+                            </span>
+                        </div>
+                        
+                        <table class="highlight">
+                            <thead class="grey lighten-4">
+                                <tr>
+                                    <th style="padding-left: 20px; width: 15%;">#</th>
+                                    <th style="width: 45%;">Asset</th>
+                                    <th class="right-align" style="padding-right: 20px; width: 40%;">P&L</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dashboard-positions-body">
+                                <tr>
+                                    <td style="padding-left: 20px;" class="grey-text">1</td>
+                                    <td>
+                                        <b class="blue-grey-text text-darken-4">BTC/USDT</b>
+                                        <br><span class="badge-mini green white-text">LONG</span>
+                                    </td>
+                                    <td class="right-align" style="padding-right: 20px;">
+                                        <span class="green-text text-darken-1 strong">+$142.50</span>
+                                        <br><small class="grey-text">(+2.1%)</small>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 20px;" class="grey-text">2</td>
+                                    <td>
+                                        <b class="blue-grey-text text-darken-4">ETH/USDT</b>
+                                        <br><span class="badge-mini red white-text">SHORT</span>
+                                    </td>
+                                    <td class="right-align" style="padding-right: 20px;">
+                                        <span class="red-text strong">-$45.00</span>
+                                        <br><small class="grey-text">(-1.5%)</small>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding-left: 20px;" class="grey-text">3</td>
+                                    <td>
+                                        <b class="blue-grey-text text-darken-4">SOL/USDT</b>
+                                        <br><span class="badge-mini green white-text">LONG</span>
+                                    </td>
+                                    <td class="right-align" style="padding-right: 20px;">
+                                        <span class="green-text text-darken-1 strong">+$2.10</span>
+                                        <br><small class="grey-text">(+0.05%)</small>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
     <!-- <div class="recipes container grey-text text-darken-1">
