@@ -133,3 +133,72 @@
 .no-shadow {
     box-shadow: none !important;
 }
+
+/* 1. Centering Logic */
+.row-flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centers cards horizontally */
+    align-items: stretch;    /* Makes cards in the same row equal height */
+    margin-top: 20px;
+}
+
+/* 2. Card Styling */
+.trade-card {
+    border-radius: 15px !important;
+    overflow: hidden;
+    margin: 10px auto;
+}
+
+.long-border { border-left: 8px solid #26a69a !important; }
+.short-border { border-left: 8px solid #ef5350 !important; }
+
+.trade-title {
+    font-weight: 800 !important;
+    font-size: 1.4rem !important;
+    margin-bottom: 0 !important;
+}
+
+.pnl-text {
+    font-weight: 800;
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+/* 3. Helper Classes */
+.side-badge {
+    position: relative !important;
+    float: left !important;
+    margin-left: 0 !important;
+    top: 5px !important;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.trade-info-row {
+    margin-bottom: 8px !important;
+    font-size: 0.9rem;
+}
+
+.mt-10 { margin-top: 10px; }
+.mb-10 { margin-bottom: 10px; }
+.mb-0 { margin-bottom: 0px !important; }
+
+.btn-close {
+    font-weight: 700 !important;
+    letter-spacing: 0.5px;
+}
+
+/* 4. Mobile Responsive Adjustment */
+@media only screen and (max-width: 600px) {
+    .row-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+    .col.s12 {
+        width: 100% !important;
+    }
+    .trade-title {
+        font-size: 1.2rem !important;
+    }
+}
