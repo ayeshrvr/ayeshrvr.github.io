@@ -33,109 +33,79 @@
     <!-- side nav -->
     <ul id="side-menu" class="sidenav side-menu"></ul>
 
-    <div class="container">
+    <div id="grid-overview" class="container">
         <div class="row" style="margin-top: 20px;">
-            <div class="col s12 m8 offset-m2">
-                <div class="card-panel white z-depth-1 center-align" style="border-radius: 12px; padding: 15px;">
-                    <div id="status-container" class="valign-wrapper justify-center" style="display: inline-flex;">
-                        <div class="left">
-                            <span id="bot-dot" class="btn-floating btn-small waves-effect waves-light green pulse" style="width: 12px; height: 12px; margin-right: 10px;"></span>
-                            <span class="fw-bold" style="font-weight: 700; letter-spacing: 1px; color: #222;">BOT RUNNING</span>
-                        </div>
-                        <span class="mx-3 grey-text" style="font-size: 0.8rem; margin: 0 15px;"> | </span>
-                        <div class="right">
-                            <span class="fw-bold" style="font-weight: 700; letter-spacing: 1px; color: #222;">TRADING OFF</span>
-                            <span id="trading-dot" class="btn-floating btn-small waves-effect waves-light orange pulse" style="width: 12px; height: 12px; margin-left: 10px;"></span>
-                        </div>
-                    </div>
-                    <div class="grey-text" style="font-size: 0.8rem; margin-top: 5px;">Updated: Just now</div>
-                </div>
+            <div class="col s12">
+                <h5 class="fw-bold blue-grey-text text-darken-4">Active Grids</h5>
+                <p class="grey-text mt-0">Real-time status of your running bots</p>
             </div>
         </div>
 
         <div class="row">
             <div class="col s12">
-                <div class="card balance-card center-align">
-                    <div class="card-content">
-                        <span class="stat-label white-text opacity-7">Current Balance</span>
-                        <h2 class="mt-0 mb-5">$1,245.50</h2>
-                        <div class="green-text text-accent-3 strong" style="font-size: 1.1rem;">
-                            +$24.15 (1.98%) <small class="white-text">Today</small>
+                <div class="card white card-soft waves-effect grid-main-row" onclick="location.href='grid-details.html?coin=BNB'" style="display: block; width: 100%; margin-bottom: 15px;">
+                    <div class="card-content" style="padding: 15px;">
+                        <div class="row mb-5 valign-wrapper">
+                            <div class="col s6">
+                                <span class="asset-name">BNB/USDT</span>
+                                <span class="status-pill status-active" style="margin-left: 10px;">Active</span>
+                            </div>
+                            <div class="col s6 right-align">
+                                <span class="pnl-text green-text">+$15.20</span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="col s6">
+                                <span class="stat-label">Price:</span> <span class="fw-bold">$613.00</span>
+                            </div>
+                            <div class="col s6 right-align">
+                                <span class="score-badge">SCORE: 66</span>
+                            </div>
+                        </div>
+
+                        <div class="progress grey lighten-4" style="height: 4px; margin: 10px 0;">
+                            <div class="determinate blue" style="width: 45%; left: 20%;"></div>
+                        </div>
+                        
+                        <div class="row mb-0" style="font-size: 0.75rem; color: #757575;">
+                            <div class="col s4">Range: 580 - 650</div>
+                            <div class="col s4 center-align">Orders: 4B / 6S</div>
+                            <div class="col s4 right-align">Filled Today: 12</div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col s4">
-                <div class="card white card-soft center-align" style="padding: 10px;">
-                    <p class="stat-label">Active Grids</p>
-                    <p class="stat-value">3</p>
-                </div>
-            </div>
-            <div class="col s4">
-                <div class="card white card-soft center-align" style="padding: 10px;">
-                    <p class="stat-label">Win Rate</p>
-                    <p class="stat-value">92%</p>
-                </div>
-            </div>
-            <div class="col s4">
-                <div class="card white card-soft center-align" style="padding: 10px;">
-                    <p class="stat-label">Total Fills</p>
-                    <p class="stat-value">142</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col s12">
-                <div class="card white card-soft">
-                    <div class="card-content" style="padding: 0;">
-                        <div style="padding: 15px 20px; border-bottom: 1px solid #f0f0f0;">
-                            <span class="card-title strong" style="font-size: 1rem; margin: 0;">ACTIVE GRIDS</span>
-                        </div>
-
-                        <div class="grid-row waves-effect" style="display: block; width: 100%;">
-                            <div class="row mb-0 valign-wrapper">
-                                <div class="col s6">
-                                    <span class="asset-name">BNB/USDT</span> <span class="grey-text" style="font-size: 0.8rem;">$613.00</span>
-                                    <br><span class="green-text" style="font-size: 0.7rem;">↑ 0.5% 24h</span>
-                                </div>
-                                <div class="col s6 right-align">
-                                    <span class="pnl-mini green-text">+$15.20</span>
-                                    <br><span class="score-badge">SCORE: 66</span>
-                                </div>
+                <div class="card white card-soft waves-effect grid-main-row" onclick="location.href='grid-details.html?coin=ETH'" style="display: block; width: 100%; margin-bottom: 15px;">
+                    <div class="card-content" style="padding: 15px;">
+                        <div class="row mb-5 valign-wrapper">
+                            <div class="col s6">
+                                <span class="asset-name">ETH/USDT</span>
+                                <span class="status-pill status-active" style="margin-left: 10px;">Active</span>
                             </div>
-                            <div class="row mb-0" style="margin-top: 8px;">
-                                <div class="col s12 grey-text" style="font-size: 0.75rem;">
-                                    <i class="material-icons tiny" style="vertical-align: middle;">list</i> 10 Orders | 12 Filled
-                                </div>
+                            <div class="col s6 right-align">
+                                <span class="pnl-text green-text">+$7.50</span>
                             </div>
                         </div>
 
-                        <div class="grid-row waves-effect" style="display: block; width: 100%;">
-                            <div class="row mb-0 valign-wrapper">
-                                <div class="col s6">
-                                    <span class="asset-name">UNI/USDT</span> <span class="grey-text" style="font-size: 0.8rem;">$3.47</span>
-                                    <br><span class="red-text" style="font-size: 0.7rem;">↓ 0.2% 24h</span>
-                                </div>
-                                <div class="col s6 right-align">
-                                    <span class="pnl-mini green-text">+$10.05</span>
-                                    <br><span class="score-badge">SCORE: 63</span>
-                                </div>
+                        <div class="row mb-5">
+                            <div class="col s6">
+                                <span class="stat-label">Price:</span> <span class="fw-bold">$1,949.00</span>
                             </div>
-                            <div class="row mb-0" style="margin-top: 8px;">
-                                <div class="col s12 grey-text" style="font-size: 0.75rem;">
-                                    <i class="material-icons tiny" style="vertical-align: middle;">list</i> 10 Orders | 8 Filled
-                                </div>
+                            <div class="col s6 right-align">
+                                <span class="score-badge">SCORE: 63</span>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="card-action center-align" style="border-top: 1px solid #f0f0f0;">
-                        <a href="grids.html" class="blue-text text-darken-2 strong" style="margin-right: 20px;">VIEW GRID DETAILS</a>
-                        <a href="scanner.html" class="blue-text text-darken-2 strong">MARKET SCANNER</a>
+
+                        <div class="progress grey lighten-4" style="height: 4px; margin: 10px 0;">
+                            <div class="determinate blue" style="width: 30%; left: 50%;"></div>
+                        </div>
+
+                        <div class="row mb-0" style="font-size: 0.75rem; color: #757575;">
+                            <div class="col s4">Range: 1800 - 2100</div>
+                            <div class="col s4 center-align">Orders: 5B / 5S</div>
+                            <div class="col s4 right-align">Filled Today: 6</div>
+                        </div>
                     </div>
                 </div>
             </div>
