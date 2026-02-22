@@ -38,3 +38,24 @@ nav { background: var(--primary); border-bottom: 8px solid var(--secondary); }
 .flex-column { display: flex; flex-direction: column; }
 .mt-0 { margin-top: 0 !important; }
 .mb-5 { margin-bottom: 5px !important; }
+
+/* Clickable Row Animation */
+.grid-main-row {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.grid-main-row:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+/* Vertical Divider for mini-stats */
+.border-right-light {
+    border-right: 1px solid #eeeeee;
+}
+
+/* Mini Progress Bar for Grid Range */
+.progress .determinate.blue {
+    background-color: var(--secondary) !important;
+}
