@@ -321,3 +321,26 @@ marquee {
 
 /* Custom Range Slider Styling */
 input[type=range] + .thumb { background-color: var(--primary) !important; }
+
+/* Helper for the breaker items */
+.breaker-item {
+    background: rgba(255, 255, 255, 0.5); /* Slight highlight */
+    padding: 12px 15px;
+    border-radius: 10px;
+    width: 100%;
+    display: flex !important;
+    justify-content: space-between !important;
+}
+
+/* Fix for Materialize switch alignment */
+.switch label {
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.mb-20 { margin-bottom: 20px !important; }
+
+/* Border color for the orange card */
+.border-orange {
+    border: 1px solid #ffe0b2 !important;
+}
