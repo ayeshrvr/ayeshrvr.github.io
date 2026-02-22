@@ -50,7 +50,7 @@ var htmlText = '<div>'+
   '<li><a href="/pages/analytics.html" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
       '<i class="material-icons" style="height: 40px !important; line-height: 40px !important;">blur_on</i>Analytics</a>'+
   '</li>'+
-  '<li><a href="/" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
+  '<li><a href="/pages/logs.html" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
       '<i class="material-icons" style="height: 40px !important; line-height: 40px !important;">format_align_center</i>Logs</a>'+
   '</li>'+
   '<li><a href="/" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
