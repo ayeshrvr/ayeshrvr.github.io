@@ -59,3 +59,62 @@ nav { background: var(--primary); border-bottom: 8px solid var(--secondary); }
 .progress .determinate.blue {
     background-color: var(--secondary) !important;
 }
+
+/* SVG Chart Elements */
+.grid-line-svg {
+    stroke-width: 1;
+    stroke-dasharray: 5,5;
+}
+.grid-line-svg.sell { stroke: var(--danger); opacity: 0.3; }
+.grid-line-svg.buy { stroke: var(--success); opacity: 0.3; }
+
+.ladder-labels {
+    position: absolute;
+    right: 5px;
+    height: 100%;
+    width: 60px;
+    z-index: 6;
+    pointer-events: none;
+}
+
+.price-tag {
+    position: absolute;
+    font-size: 0.65rem;
+    font-weight: bold;
+    background: rgba(255,255,255,0.9);
+    padding: 2px 4px;
+    border-radius: 3px;
+    transform: translateY(-50%);
+}
+.price-tag.sell { color: var(--danger); border: 1px solid #ffcdd2; }
+.price-tag.buy { color: var(--success); border: 1px solid #c8e6c9; }
+
+/* Adjusting the Price Head for horizontal scrolling */
+.price-bubble {
+    position: absolute;
+    z-index: 10;
+    transition: all 0.5s ease-in-out;
+}
+
+/* Ensure the SVG takes up space and lines are visible */
+.price-sparkline-svg {
+    display: block;
+    width: 100%;
+    height: 400px; /* Force height */
+    overflow: visible; /* Prevents price bubble from getting cut off */
+}
+
+#price-path {
+    stroke: var(--primary);
+    stroke-width: 3;
+    fill: none;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+/* Ensure grid lines aren't invisible */
+.grid-line-svg {
+    stroke-dasharray: 4;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}

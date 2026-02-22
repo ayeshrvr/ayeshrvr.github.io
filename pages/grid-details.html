@@ -1,0 +1,89 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1A3263">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bot Manager</title>
+    <!-- materialize icons, css & js -->
+    <link type="text/css" href="/css/materialize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" href="/css/styles.css" rel="stylesheet">
+    <link type="text/css" href="/css/loader.css" rel="stylesheet">
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#13263d">
+</head>
+
+<body class="grey lighten-4">
+    <!-- Header -->
+    <nav class="z-depth-0">
+        <div class="nav-wrapper container">
+            <a href="index.html" class="brand-logo left"><img src="/img/logo.png" alt="logo"></a>
+            <span class="right grey-text text-darken-1">
+                <i class="material-icons sidenav-trigger" style="cursor: pointer;" data-target="side-menu">menu</i>
+            </span>
+        </div>
+    </nav>
+
+    <!-- side nav -->
+    <ul id="side-menu" class="sidenav side-menu"></ul>
+
+    <div id="" class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="card white card-soft overflow-hidden">
+                    <div class="card-content p-0">
+                        <div style="padding: 15px 20px; display: flex; justify-content: space-between; align-items: center;">
+                            <span class="stat-label">Live Grid Visualization (15m Trail)</span>
+                            <span class="score-badge">UPDATES: 30s</span>
+                        </div>
+
+                        <div class="ladder-container grey lighten-5" style="height: 400px; position: relative;">
+                            <svg id="live-chart" width="100%" height="100%" style="position: absolute;">
+                                <line x1="0" y1="100" x2="100%" y2="100" stroke="#ffcdd2" stroke-dasharray="5" />
+                                <line x1="0" y1="300" x2="100%" y2="300" stroke="#c8e6c9" stroke-dasharray="5" />
+                                
+                                <path id="price-path" d="M 0 200 L 100 210 L 200 180 L 300 220 L 400 200" 
+                                    fill="none" stroke="#1A3263" stroke-width="3" />
+                            </svg>
+                            
+                            <div id="price-head" class="price-bubble blue darken-2" style="position: absolute; right: 10px; top: 185px;">
+                                66,420 <i class="material-icons tiny">navigation</i>
+                            </div>
+                        </div>
+                    
+                    <div class="card-action" style="background: #fafafa;">
+                        <div class="row mb-0 center-align">
+                            <div class="col s4 border-right">
+                                <span class="stat-label">Upper Limit</span>
+                                <p class="fw-bold">69,000</p>
+                            </div>
+                            <div class="col s4 border-right">
+                                <span class="stat-label">Current</span>
+                                <p class="fw-bold blue-text">66,420</p>
+                            </div>
+                            <div class="col s4">
+                                <span class="stat-label">Lower Limit</span>
+                                <p class="fw-bold">64,500</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/ui.js"></script>
+    <script type="text/javascript" src="/js/dbConnect.js"></script>
+    <script src="/js/navigation.js"></script>
+    <script src="/js/loader.js"></script>
+    <script src="/js/grid-details.js"></script>
+</body>
+
+</html>
