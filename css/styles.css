@@ -344,3 +344,31 @@ input[type=range] + .thumb { background-color: var(--primary) !important; }
 .border-orange {
     border: 1px solid #ffe0b2 !important;
 }
+
+/* Container for label + switch */
+.breaker-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Pushes content to opposite ends */
+    background: rgba(255, 255, 255, 0.6);
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+}
+
+/* Ensure the switch itself stays right-aligned */
+.breaker-row .switch {
+    text-align: right;
+    flex-shrink: 0; /* Prevents the switch from squishing */
+}
+
+/* On very small mobile screens, hide the 'Off/Stop' text to save space */
+@media only screen and (max-width: 600px) {
+    .switch label {
+        font-size: 0.85rem;
+    }
+    /* Optional: If it's still tight, we can hide the negative labels */
+    .hide-on-small-only {
+        display: none;
+    }
+}

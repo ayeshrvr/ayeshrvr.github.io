@@ -37,48 +37,38 @@
         <div class="row" style="margin-top: 20px;">
             <div class="col s12">
                 <div class="card orange lighten-5 card-soft border-orange">
-                    <div class="card-content" style="padding: 20px;">
-                        <span class="card-title orange-text text-darken-4 fw-bold" style="font-size: 1.1rem; margin-bottom: 20px; display: block; text-transform: uppercase; letter-spacing: 1px;">
-                            Master Circuit Breakers
+                    <div class="card-content" style="padding: 15px 20px;">
+                        <span class="card-title orange-text text-darken-4 fw-bold mb-20" style="font-size: 1rem; letter-spacing: 0.5px;">
+                            MASTER CIRCUIT BREAKERS
                         </span>
                         
-                        <div class="row mb-0">
-                            <div class="col s12 m6 mb-20">
-                                <div class="breaker-item valign-wrapper space-between">
-                                    <span class="fw-600 grey-text text-darken-3">Bot System</span>
-                                    <div class="switch">
-                                        <label>
-                                            Off
-                                            <input type="checkbox" id="master-bot-power" checked>
-                                            <span class="lever"></span>
-                                            On
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col s12 m6 mb-20">
-                                <div class="breaker-item valign-wrapper space-between">
-                                    <span class="fw-600 grey-text text-darken-3">Trading Activity</span>
-                                    <div class="switch">
-                                        <label>
-                                            Stop
-                                            <input type="checkbox" id="master-trade-power" checked>
-                                            <span class="lever"></span>
-                                            Active
-                                        </label>
-                                    </div>
-                                </div>
+                        <div class="breaker-row mb-15">
+                            <span class="grey-text text-darken-3 fw-600">Bot System</span>
+                            <div class="switch">
+                                <label>
+                                    <span class="hide-on-small-only">Off</span>
+                                    <input type="checkbox" checked>
+                                    <span class="lever"></span>
+                                    On
+                                </label>
                             </div>
                         </div>
 
-                        <div class="row mb-0">
-                            <div class="col s12">
-                                <button class="btn-large red darken-2 waves-effect waves-light z-depth-1" style="width: 100%; border-radius: 12px; font-weight: 800; text-transform: none; height: 54px;">
-                                    <i class="material-icons left">gpp_maybe</i> EMERGENCY STOP
-                                </button>
+                        <div class="breaker-row mb-20">
+                            <span class="grey-text text-darken-3 fw-600">Trading Activity</span>
+                            <div class="switch">
+                                <label>
+                                    <span class="hide-on-small-only">Stop</span>
+                                    <input type="checkbox" checked>
+                                    <span class="lever"></span>
+                                    Active
+                                </label>
                             </div>
                         </div>
+
+                        <button class="btn-large red darken-2 waves-effect waves-light btn-block" style="width: 100%; border-radius: 12px; font-weight: 800; height: 50px;">
+                            <i class="material-icons left">gpp_maybe</i> EMERGENCY STOP
+                        </button>
                     </div>
                 </div>
             </div>
