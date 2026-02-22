@@ -44,7 +44,7 @@ var htmlText = '<div>'+
   '<li><a href="/pages/trade-history.html" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
       '<i class="material-icons"  style="height: 40px !important; line-height: 40px !important;">history</i>Trade History</a>'+
   '</li>'+
-  '<li><a href="/pages/expenditures.html" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
+  '<li><a href="/pages/market-scanner.html" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
       '<i class="material-icons"  style="height: 40px !important; line-height: 40px !important; ">monetization_on</i>Market Scanner</a>'+
   '</li>'+
   '<li><a href="/" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+

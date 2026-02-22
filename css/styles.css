@@ -426,3 +426,102 @@ td small {
 }
 
 .uppercase { text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.5px; }
+
+.trail-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicking through the dots */
+}
+
+.trail-dot {
+    position: absolute;
+    left: 45px; /* Aligned behind the price bubble */
+    width: 6px;
+    height: 6px;
+    background-color: #1976d2; /* Match your blue theme */
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+/* Optional: Connect the dots with a thin line */
+.trail-container::before {
+    content: '';
+    position: absolute;
+    left: 47px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(25, 118, 210, 0.1);
+}
+
+.ladder-container {
+    height: 380px;
+    position: relative;
+    margin-top: 20px;
+    overflow: hidden;
+    border-top: 1px solid #eee;
+}
+
+.price-sparkline-svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+
+.price-bubble {
+    position: absolute;
+    left: 10px; /* Fixed to left, moving only vertically */
+    z-index: 10;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.price-bubble i { transform: rotate(90deg); font-size: 12px; }
+
+/* Dashboard Grid Line Styling */
+.grid-line {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    border-top: 1px dashed rgba(0,0,0,0.1);
+}
+.grid-line.sell { border-color: rgba(244, 67, 54, 0.2); }
+.grid-line.buy { border-color: rgba(76, 175, 80, 0.2); }
+
+/* Make tabs stay at the top during scroll */
+.tabs {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Improve badge look */
+.new.badge {
+    font-weight: bold;
+    min-width: 40px;
+    border-radius: 6px;
+}
+
+/* Custom progress bar for Strength */
+.progress {
+    margin: 10px 0 0 0;
+    overflow: hidden;
+}
+
+/* Style the Asset column */
+td .strong {
+    color: #263238;
+    font-weight: 700;
+}
