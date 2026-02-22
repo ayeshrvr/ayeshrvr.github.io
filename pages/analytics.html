@@ -1,0 +1,113 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1A3263">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bot Manager</title>
+    <!-- materialize icons, css & js -->
+    <link type="text/css" href="/css/materialize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" href="/css/styles.css" rel="stylesheet">
+    <link type="text/css" href="/css/loader.css" rel="stylesheet">
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#13263d">
+</head>
+
+<body class="grey lighten-4">
+    <!-- Header -->
+    <nav class="z-depth-0">
+        <div class="nav-wrapper container">
+            <a href="index.html" class="brand-logo left"><img src="/img/logo.png" alt="logo"></a>
+            <span class="right grey-text text-darken-1">
+                <i class="material-icons sidenav-trigger" style="cursor: pointer;" data-target="side-menu">menu</i>
+            </span>
+        </div>
+    </nav>
+
+    <!-- side nav -->
+    <ul id="side-menu" class="sidenav side-menu"></ul>
+
+    <div class="container">
+        <div class="row" style="margin-top: 20px; margin-bottom: 10px;">
+            <div class="col s12">
+                <div class="valign-wrapper" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h5 class="fw-bold blue-grey-text text-darken-4 mt-0" style="margin-bottom: 0;">Analytics</h5>
+                        <span class="stat-label">Performance Overview</span>
+                    </div>
+                    <button class="btn-flat blue-text waves-effect" onclick="toggleDateRange()">
+                        <i class="material-icons left">calendar_today</i> Last 30D
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="card white card-soft">
+                    <div class="card-content">
+                        <span class="card-title stat-label">Equity Curve (Balance over time)</span>
+                        <canvas id="equityChart" style="width:100%; height:200px;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="card white card-soft">
+                    <div class="card-content">
+                        <span class="card-title stat-label">Daily P&L ($)</span>
+                        <canvas id="dailyProfitChart" style="width:100%; height:150px;"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col s12 m6">
+                <div class="card white card-soft">
+                    <div class="card-content">
+                        <span class="card-title stat-label">Profit by Asset</span>
+                        <canvas id="coinDistChart" style="width:100%; height:150px;"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <h6 class="blue-grey-text text-darken-2 fw-bold" style="padding-left: 10px;">Grid Intelligence</h6>
+            </div>
+            <div class="col s12">
+                <div class="card white card-soft">
+                    <div class="card-content">
+                        <div class="row mb-0">
+                            <div class="col s6 border-right-light">
+                                <span class="stat-label">Best Spacing</span>
+                                <p class="stat-value green-text">0.55%</p>
+                            </div>
+                            <div class="col s6">
+                                <span class="stat-label">Optimal Vol</span>
+                                <p class="stat-value">1.2% - 1.8%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/ui.js"></script>
+    <script type="text/javascript" src="/js/dbConnect.js"></script>
+    <script src="/js/navigation.js"></script>
+    <script src="/js/loader.js"></script>
+    <script src="/js/analytics.js"></script>
+</body>
+
+</html>
