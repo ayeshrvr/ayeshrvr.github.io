@@ -156,3 +156,52 @@ nav { background: var(--primary); border-bottom: 8px solid var(--secondary); }
         font-size: 1rem !important;
     }
 }
+
+.trade-pair-viz {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+.viz-line {
+    width: 100%;
+    height: 2px;
+    background: #e0e0e0;
+    position: relative;
+}
+.viz-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: -4px;
+    border: 2px solid white;
+}
+.viz-dot.buy { background: var(--success); }
+.viz-dot.sell { background: var(--danger); }
+.ml-5 { margin-left: 5px; }
+
+/* Container for the timeline */
+.trade-pair-container {
+    padding: 10px 5px; /* Gives dots space so they don't clip at 0% or 100% */
+}
+
+.viz-track {
+    position: relative;
+    background: #e0e0e0;
+}
+
+.viz-dot {
+    position: absolute;
+    top: 50%; /* Center vertically on the track */
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    transform: translate(-50%, -50%); /* This perfectly centers the dot on the line */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 2;
+}
+
+/* Reusing your success/danger variables */
+.viz-dot.buy { background-color: var(--success); }
+.viz-dot.sell { background-color: var(--danger); }
