@@ -118,3 +118,41 @@ nav { background: var(--primary); border-bottom: 8px solid var(--secondary); }
     stroke-width: 1;
     shape-rendering: crispEdges;
 }
+
+.ladder-labels {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 50px;
+    pointer-events: none;
+}
+
+.price-tag {
+    position: absolute;
+    right: 5px;
+    font-size: 0.6rem;
+    padding: 1px 3px;
+    border-radius: 3px;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
+}
+
+.price-tag.sell { color: var(--danger); border: 1px solid rgba(239, 83, 80, 0.2); }
+.price-tag.buy { color: var(--success); border: 1px solid rgba(38, 166, 154, 0.2); }
+
+.border-right-light {
+    border-right: 1px solid #f0f0f0;
+}
+
+.mt-10 {
+    margin-top: 10px !important;
+}
+
+/* Ensure stat values fit on small screens */
+@media only screen and (max-width: 600px) {
+    .stat-value {
+        font-size: 1rem !important;
+    }
+}

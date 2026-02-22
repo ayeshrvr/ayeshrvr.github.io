@@ -1,37 +1,42 @@
 // Configuration
-const MAX_POINTS = 30; // 15 minutes of history at 30s intervals
-let priceHistory = []; // Stores the last 30 price points
+const MAX_POINTS = 30; 
+let priceHistory = []; 
+
+// Mock Data for Binding Reference
+const activeGrid = {
+    sells: [68000, 67500, 67000, 66500],
+    buys: [65500, 65000, 64500, 64000],
+    min: 63500,
+    max: 68500,
+    stats: {
+        capital: 500.00,
+        volatility: "High",
+        performance: "+2.4%",
+        trades: 142,
+        avgProfit: 0.85,
+        efficiency: "84.2%"
+    }
+};
 
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Initialize the SVG dimensions
     initChartDimensions();
+    generateSampleData(66000);
+    renderGridChart(activeGrid.min, activeGrid.max);
+    bindPerformanceStats();
     
-    // 2. Generate Sample Data (Simulating the last 15 mins of action)
-    generateSampleData(66000, 67000); // Start price, Volatility range
-    
-    // 3. Initial Render
-    renderGridChart();
-    
-    // 4. (Optional) Simulate a live update every 30 seconds
     setInterval(() => {
-        // Mock a small price move
         const lastPrice = priceHistory[0];
         const nextPrice = lastPrice + (Math.random() * 200 - 100);
-        updateGridChart(nextPrice, 62000, 68000);
+        updateGridChart(nextPrice, activeGrid.min, activeGrid.max);
     }, 30000); 
 });
 
 function initChartDimensions() {
-    const svg = document.getElementById('live-chart') || document.querySelector('.price-sparkline-svg');
-    if (svg) {
-        // Set viewBox to a fixed coordinate system (0 to 1000 wide, 400 high)
-        // This makes the math easier regardless of screen size
-        svg.setAttribute('viewBox', '0 0 1000 400');
-    }
+    const svg = document.getElementById('live-chart');
+    if (svg) svg.setAttribute('viewBox', '0 0 1000 400');
 }
 
-function generateSampleData(startPrice, range) {
-    // Fills the array with 30 points of random-walk data
+function generateSampleData(startPrice) {
     let current = startPrice;
     for (let i = 0; i < MAX_POINTS; i++) {
         current += (Math.random() * 150 - 75);
@@ -39,56 +44,73 @@ function generateSampleData(startPrice, range) {
     }
 }
 
-/**
- * Main Render Function
- * @param {number} currentPrice - Latest price from API
- * @param {number} minGrid - Lower limit of the grid
- * @param {number} maxGrid - Upper limit of the grid
- */
 function updateGridChart(currentPrice, minGrid, maxGrid) {
-    // Add new price to the front, remove oldest from back
     priceHistory.unshift(currentPrice);
     if (priceHistory.length > MAX_POINTS) priceHistory.pop();
-    
     renderGridChart(minGrid, maxGrid);
 }
 
-function renderGridChart(minGrid = 62000, maxGrid = 68000) {
-    const svgWidth = 1000; // Match viewBox width
-    const svgHeight = 400; // Match viewBox height
+function renderGridChart(minGrid, maxGrid) {
+    const svgWidth = 1000, svgHeight = 400;
     const pathElement = document.getElementById('price-path');
     const fillElement = document.getElementById('price-fill');
     const headElement = document.getElementById('price-head');
+    const gridGroup = document.getElementById('grid-levels-group');
+    const labelContainer = document.getElementById('grid-labels-container');
 
-    if (!pathElement) return;
+    if (gridGroup) gridGroup.innerHTML = '';
+    if (labelContainer) labelContainer.innerHTML = '';
+
+    activeGrid.sells.forEach(p => drawGridLine(p, 'sell', minGrid, maxGrid));
+    activeGrid.buys.forEach(p => drawGridLine(p, 'buy', minGrid, maxGrid));
 
     let points = [];
-    
     priceHistory.forEach((price, i) => {
-        // Calculate X: Newest (index 0) is at the right (1000), oldest at the left (0)
         let x = svgWidth - (i * (svgWidth / (MAX_POINTS - 1)));
-        
-        // Calculate Y: Normalized within the grid range
         let y = svgHeight - ((price - minGrid) / (maxGrid - minGrid) * svgHeight);
-        
-        // Clamp Y so it doesn't fly off the card
         y = Math.max(10, Math.min(y, svgHeight - 10));
-        
         points.push(`${x},${y}`);
         
-        // Update the Floating Price Bubble (only for the newest point at index 0)
         if (i === 0 && headElement) {
-            // Convert coordinate to percentage for CSS positioning
-            headElement.style.top = (y - 15) + "px"; 
+            headElement.style.top = (y - 15) + "px";
             headElement.innerHTML = `${Math.floor(price).toLocaleString()} <i class="material-icons tiny">navigation</i>`;
         }
     });
 
-    // Create the "D" string for the SVG Path
     const dString = "M " + points.join(" L ");
     pathElement.setAttribute('d', dString);
+    if (fillElement) fillElement.setAttribute('d', dString + ` L 0,${svgHeight} L ${svgWidth},${svgHeight} Z`);
+}
 
-    // Create the Fill Area (Closed loop to the bottom)
-    const fillString = dString + ` L 0,${svgHeight} L ${svgWidth},${svgHeight} Z`;
-    if (fillElement) fillElement.setAttribute('d', fillString);
+function drawGridLine(price, type, minGrid, maxGrid) {
+    const gridGroup = document.getElementById('grid-levels-group');
+    const labelContainer = document.getElementById('grid-labels-container');
+    let y = 400 - ((price - minGrid) / (maxGrid - minGrid) * 400);
+    const color = type === 'sell' ? '#ef5350' : '#26a69a';
+
+    if (gridGroup) {
+        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+        line.setAttribute("x1", "0"); line.setAttribute("y1", y);
+        line.setAttribute("x2", "100%"); line.setAttribute("y2", y);
+        line.setAttribute("stroke", color); line.setAttribute("stroke-dasharray", "4,4");
+        line.setAttribute("opacity", "0.4");
+        gridGroup.appendChild(line);
+    }
+
+    if (labelContainer) {
+        const label = document.createElement("span");
+        label.className = `price-tag ${type}`;
+        label.style.top = `${(y / 400) * 100}%`;
+        label.innerText = price.toLocaleString();
+        labelContainer.appendChild(label);
+    }
+}
+
+function bindPerformanceStats() {
+    document.getElementById('capital-allocated').innerText = `$${activeGrid.stats.capital.toFixed(2)}`;
+    document.getElementById('vol-category').innerText = activeGrid.stats.volatility;
+    document.getElementById('grid-perf').innerText = activeGrid.stats.performance;
+    document.getElementById('trades-completed').innerText = activeGrid.stats.trades;
+    document.getElementById('avg-profit').innerText = `$${activeGrid.stats.avgProfit.toFixed(2)}`;
+    document.getElementById('grid-efficiency').innerText = activeGrid.stats.efficiency;
 }

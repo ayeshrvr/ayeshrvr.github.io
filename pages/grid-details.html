@@ -45,15 +45,23 @@
 
                         <div class="ladder-container grey lighten-5" style="height: 400px; position: relative;">
                             <svg id="live-chart" width="100%" height="100%" style="position: absolute;">
-                                <line x1="0" y1="100" x2="100%" y2="100" stroke="#ffcdd2" stroke-dasharray="5" />
-                                <line x1="0" y1="300" x2="100%" y2="300" stroke="#c8e6c9" stroke-dasharray="5" />
-                                
-                                <path id="price-path" d="M 0 200 L 100 210 L 200 180 L 300 220 L 400 200" 
-                                    fill="none" stroke="#1A3263" stroke-width="3" />
+                                <defs>
+                                    <linearGradient id="chart-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                        <stop offset="0%" style="stop-color:var(--primary); stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:var(--primary); stop-opacity:0" />
+                                    </linearGradient>
+                                </defs>
+
+                                <g id="grid-levels-group"></g>
+
+                                <path id="price-fill" d="" fill="url(#chart-gradient)" opacity="0.1" />
+                                <path id="price-path" d="" fill="none" stroke="var(--primary)" stroke-width="3" />
                             </svg>
                             
-                            <div id="price-head" class="price-bubble blue darken-2" style="position: absolute; right: 10px; top: 185px;">
-                                66,420 <i class="material-icons tiny">navigation</i>
+                            <div id="grid-labels-container" class="ladder-labels"></div>
+
+                            <div id="price-head" class="price-bubble blue darken-2" style="position: absolute; right: 10px;">
+                                -- <i class="material-icons tiny">navigation</i>
                             </div>
                         </div>
                     
@@ -76,6 +84,52 @@
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="card white card-soft">
+                    <div class="card-content">
+                        <span class="card-title strong mb-5" style="font-size: 1rem;">Performance Insights</span>
+                        
+                        <div class="row mb-0">
+                            <div class="col s4 border-right-light">
+                                <div class="mt-10">
+                                    <span class="stat-label">Capital</span>
+                                    <p class="stat-value" id="capital-allocated">$500.00</p>
+                                </div>
+                                <div class="mt-10">
+                                    <span class="stat-label">Efficiency</span>
+                                    <p class="stat-value green-text" id="grid-efficiency">84.2%</p>
+                                </div>
+                            </div>
+
+                            <div class="col s4 border-right-light">
+                                <div class="mt-10">
+                                    <span class="stat-label">Volatility</span>
+                                    <p class="stat-value" id="vol-category">High</p>
+                                </div>
+                                <div class="mt-10">
+                                    <span class="stat-label">Trades</span>
+                                    <p class="stat-value" id="trades-completed">142</p>
+                                </div>
+                            </div>
+
+                            <div class="col s4">
+                                <div class="mt-10">
+                                    <span class="stat-label">Grid Perf.</span>
+                                    <p class="stat-value green-text" id="grid-perf">+2.4%</p>
+                                </div>
+                                <div class="mt-10">
+                                    <span class="stat-label">Avg. Profit</span>
+                                    <p class="stat-value" id="avg-profit">$0.85</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script src="/js/app.js"></script>
