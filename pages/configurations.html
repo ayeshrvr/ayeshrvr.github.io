@@ -79,19 +79,55 @@
                 <div class="collapsible-header white card-soft mb-5 valign-wrapper">
                     <i class="material-icons blue-text">smart_toy</i>Bot Strategy Settings
                 </div>
-                <div class="collapsible-body white mb-10">
-                    <div class="row mb-0">
-                        <div class="input-field col s12">
-                            <p class="stat-label">Auto Coin Selection</p>
-                            <div class="switch"><label>Manual <input type="checkbox"> <span class="lever"></span> Auto</label></div>
+                <div class="collapsible-body white" style="padding: 10px 15px;">    
+                    <div class="config-flex-row">
+                        <div class="label-group">
+                            <span class="breaker-label grey-text text-darken-4">Auto Coin Selection</span>
+                            <small class="helper-text d-block">Bot picks assets via Scanner</small>
                         </div>
-                        <div class="input-field col s6">
-                            <input id="max_coins" type="number" value="2" min="1" max="5">
-                            <label for="max_coins">Max Active Coins</label>
+                        <div class="switch">
+                            <label>Manual<input type="checkbox" id="auto-select-toggle" checked><span class="lever"></span>Auto</label>
                         </div>
-                        <div class="input-field col s6">
-                            <input id="total_cap" type="number" value="1000">
-                            <label for="total_cap">Total Capital ($)</label>
+                    </div>
+
+                    <div class="config-flex-row">
+                        <span class="breaker-label grey-text text-darken-4">Active Coins</span>
+                        <div class="segmented-control">
+                            <input type="radio" name="coins" id="c1" value="1"><label for="c1">1</label>
+                            <input type="radio" name="coins" id="c2" value="2" checked><label for="c2">2</label>
+                            <input type="radio" name="coins" id="c3" value="3"><label for="c3">3</label>
+                        </div>
+                    </div>
+
+                    <div class="config-flex-row">
+                        <span class="breaker-label grey-text text-darken-4">Total Capital</span>
+                        <div class="input-with-prefix">
+                            <span class="prefix">$</span>
+                            <input type="number" value="1000" class="browser-default capital-input">
+                        </div>
+                    </div>
+
+                    <div class="config-flex-row-vertical">
+                        <div class="valign-wrapper space-between mb-5">
+                            <span class="breaker-label grey-text text-darken-4">Min Grid Score</span>
+                            <span class="blue-text fw-bold" id="score-display">70</span>
+                        </div>
+                        <p class="range-field m-0">
+                            <input type="range" id="score-slider" min="0" max="100" value="70" 
+                                oninput="document.getElementById('score-display').innerText = this.value">
+                        </p>
+                    </div>
+
+                    <div class="config-flex-row">
+                        <span class="breaker-label grey-text text-darken-4">Check Interval</span>
+                        <div class="input-field m-0 inline-select">
+                            <select class="browser-default custom-select">
+                                <option value="1m">1m</option>
+                                <option value="5m" selected>5m</option>
+                                <option value="15m">15m</option>
+                                <option value="30m">30m</option>
+                                <option value="1h">1h</option>
+                            </select>
                         </div>
                     </div>
                 </div>
