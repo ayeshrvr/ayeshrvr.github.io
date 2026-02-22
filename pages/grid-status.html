@@ -1,0 +1,177 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1A3263">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bot Manager</title>
+    <!-- materialize icons, css & js -->
+    <link type="text/css" href="/css/materialize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" href="/css/styles.css" rel="stylesheet">
+    <link type="text/css" href="/css/loader.css" rel="stylesheet">
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#13263d">
+</head>
+
+<body class="grey lighten-4">
+    <!-- top nav -->
+    <!-- top nav -->
+    <nav class="z-depth-0">
+        <div class="nav-wrapper container">
+            <a href="#!" class="brand-logo left">
+                <img src="/img/logo.png" alt="logo" class="responsive-img-logo" style="max-height: 45px;">
+            </a>
+            <span class="right grey-text text-darken-1">
+                <i class="material-icons sidenav-trigger" style="cursor: pointer;" data-target="side-menu">menu</i>
+            </span>
+        </div>
+    </nav>
+
+    <!-- side nav -->
+    <ul id="side-menu" class="sidenav side-menu"></ul>
+
+    <!-- page content -->
+    <div id="positions-tab" class="container container-tab">
+        <div class="row">
+            <div class="col s12">
+                <div class="card white z-depth-1" style="border-radius: 15px;">
+                    <div class="card-content">
+                        <div class="row" style="margin-bottom: 10px;">
+                            <div class="col s6">
+                                <span class="card-title strong" style="margin:0;">BTC/USDT Grid</span>
+                                <span class="badge green white-text left" style="margin-left:0; margin-top:5px;">ACTIVE</span>
+                            </div>
+                            <div class="col s6 right-align">
+                                <h5 class="green-text text-darken-1" style="margin:0;">+$12.40</h5>
+                                <small class="grey-text">Total Grid Profit</small>
+                            </div>
+                        </div>
+
+                        <div class="grid-visualizer-container" style="padding: 30px 0 20px 0; position: relative;">
+                            <div class="grid-range-label">
+                                <span class="left small grey-text">Lower: 62,000</span>
+                                <span class="right small grey-text">Upper: 68,000</span>
+                            </div>
+
+                            <div class="progress grey lighten-3" style="height: 12px; border-radius: 6px; margin-top: 25px; position: relative; overflow: visible;">
+                                
+                                <div class="determinate blue darken-2" style="width: 70%; left: 15%; opacity: 0.15; height: 100%; border-radius: 6px;"></div>
+
+                                <div class="grid-markers-layer" style="position: absolute; width: 100%; height: 100%; top: 0;">
+                                    <span class="grid-mark sell-mark" style="left: 75%;"></span>
+                                    <span class="grid-mark sell-mark" style="left: 85%;"></span>
+                                    <span class="grid-mark sell-mark" style="left: 95%;"></span>
+
+                                    <span class="grid-mark buy-mark" style="left: 55%;"></span>
+                                    <span class="grid-mark buy-mark" style="left: 45%;"></span>
+                                    <span class="grid-mark buy-mark" style="left: 35%;"></span>
+                                    <span class="grid-mark buy-mark" style="left: 25%;"></span>
+                                </div>
+                                
+                                <div class="price-marker" style="position: absolute; left: 65%; top: -14px; text-align: center; z-index: 5;">
+                                    <i class="material-icons blue-text" style="font-size: 1.2rem;">location_on</i>
+                                    <span class="white-text blue darken-2" style="padding: 1px 6px; border-radius: 8px; font-size: 0.65rem; display: block; margin-top: -4px;">66,420</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px;">
+                            <div class="col s4 center-align" style="border-right: 1px solid #eee;">
+                                <small class="grey-text uppercase">Open Buys</small>
+                                <p class="strong" style="margin:0;">8</p>
+                            </div>
+                            <div class="col s4 center-align" style="border-right: 1px solid #eee;">
+                                <small class="grey-text uppercase">Open Sells</small>
+                                <p class="strong" style="margin:0;">12</p>
+                            </div>
+                            <div class="col s4 center-align">
+                                <small class="grey-text uppercase">Grids Filled</small>
+                                <p class="strong" style="margin:0;">142</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-action center-align" style="border-radius: 0 0 15px 15px;">
+                        <button class="btn-flat red-text waves-effect waves-red strong">TERMINATE GRID</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <ul class="collapsible z-depth-0" style="border: 1px solid #e0e0e0; border-radius: 12px; overflow: hidden;">
+                    <li class="active">
+                        <div class="collapsible-header grey lighten-4">
+                            <i class="material-icons">list</i>Pending Grid Orders
+                        </div>
+                        <div class="collapsible-body white p-0">
+                            <table class="highlight">
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Price</th>
+                                        <th class="right-align">Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="red-text">Sell Limit</td>
+                                        <td>67,000</td>
+                                        <td class="right-align">0.001 BTC</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="red-text">Sell Limit</td>
+                                        <td>67,500</td>
+                                        <td class="right-align">0.001 BTC</td>
+                                    </tr>
+                                    <tr class="blue lighten-5">
+                                        <td colspan="3" class="center-align py-5" style="font-size: 0.8rem;">--- Market Price: 66,420 ---</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="green-text">Buy Limit</td>
+                                        <td>66,000</td>
+                                        <td class="right-align">0.001 BTC</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- add recipe side nav -->
+    <div id="side-form" class="sidenav side-form">
+        <form class="add-recipe container section">
+            <h6>New Recipe</h6>
+            <div class="divider"></div>
+            <div class="input-field">
+                <input placeholder="e.g. Ninja soup" id="title" type="text" class="validate">
+                <label for="title">Recipe Title</label>
+            </div>
+            <div class="input-field">
+                <input placeholder="e.g. Tofu, mushroom, garlic" id="ingredients" type="text" class="validate">
+                <label for="ingredients">Ingredients</label>
+            </div>
+            <div class="input-field center">
+                <button class="btn-small">Add</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/ui.js"></script>
+    <script type="text/javascript" src="/js/dbConnect.js"></script>
+    <script src="/js/navigation.js"></script>
+    <script src="/js/loader.js"></script>
+    <script src="/js/charts.js"></script>
+</body>
+
+</html>

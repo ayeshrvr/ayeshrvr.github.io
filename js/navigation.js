@@ -38,6 +38,9 @@ var htmlText = '<div>'+
   '<li><a href="/pages/positions.html" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
       '<i class="material-icons"  style="height: 40px !important; line-height: 40px !important;">assessment</i>Positions</a>'+
   '</li>'+
+  '<li><a href="/pages/grid-status.html" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
+      '<i class="material-icons"  style="height: 40px !important; line-height: 40px !important;">grid_on</i>Grid Details</a>'+
+  '</li>'+
   '<li><a href="/pages/trade-history.html" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
       '<i class="material-icons"  style="height: 40px !important; line-height: 40px !important;">history</i>Trade History</a>'+
   '</li>'+

@@ -307,3 +307,54 @@ td small {
     display: block;
     margin-top: -2px;
 }
+
+.grid-visualizer-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.grid-range-label {
+    position: absolute;
+    width: 100%;
+    top: 5px;
+}
+
+.uppercase {
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
+
+.p-0 { padding: 0 !important; }
+.py-5 { padding-top: 5px !important; padding-bottom: 5px !important; }
+
+/* The Pin on the Progress Bar */
+.price-marker i {
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: -5px;
+}
+
+/* Individual Grid Line Style */
+.grid-mark {
+    position: absolute;
+    width: 2px;
+    height: 24px; /* Taller than the bar itself */
+    top: -6px;    /* Center it vertically over the bar */
+    border-radius: 2px;
+}
+
+.sell-mark {
+    background-color: #f44336; /* Materialize Red */
+    box-shadow: 0 0 4px rgba(244, 67, 54, 0.4);
+}
+
+.buy-mark {
+    background-color: #4caf50; /* Materialize Green */
+    box-shadow: 0 0 4px rgba(76, 175, 80, 0.4);
+}
+
+/* Ensure the marker container is relative */
+.grid-visualizer-container {
+    width: 100%;
+}
