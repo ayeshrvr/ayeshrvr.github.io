@@ -205,3 +205,54 @@ nav { background: var(--primary); border-bottom: 8px solid var(--secondary); }
 /* Reusing your success/danger variables */
 .viz-dot.buy { background-color: var(--success); }
 .viz-dot.sell { background-color: var(--danger); }
+
+/* Highlights rows where the bot is already active */
+.active-trading-row {
+    background-color: rgba(38, 166, 154, 0.05) !important;
+    border-left: 4px solid var(--success);
+}
+
+/* ATR and Grid Score Badges */
+.score-badge {
+    display: inline-block;
+    min-width: 30px;
+    text-align: center;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+/* Adjust table for mobile density */
+table.highlight td {
+    padding: 12px 10px;
+    vertical-align: middle;
+}
+
+marquee {
+    vertical-align: middle;
+    font-weight: 500;
+}
+
+/* Helper for card internal separation */
+.border-top-light {
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.br-10 {
+    border-radius: 10px !important;
+}
+
+/* Ensure active row looks distinct in card format */
+.active-trading-row {
+    border-left: 6px solid var(--success) !important;
+    background: linear-gradient(to right, rgba(38, 166, 154, 0.05), white) !important;
+}
+
+/* Override for small buttons in scanner */
+.btn-small {
+    height: 32px;
+    line-height: 32px;
+    text-transform: none;
+    font-weight: 600;
+}

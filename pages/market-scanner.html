@@ -20,13 +20,10 @@
 </head>
 
 <body class="grey lighten-4">
-    <!-- top nav -->
-    <!-- top nav -->
+    <!-- Header -->
     <nav class="z-depth-0">
         <div class="nav-wrapper container">
-            <a href="#!" class="brand-logo left">
-                <img src="/img/logo.png" alt="logo" class="responsive-img-logo" style="max-height: 45px;">
-            </a>
+            <a href="index.html" class="brand-logo left"><img src="/img/logo.png" alt="logo"></a>
             <span class="right grey-text text-darken-1">
                 <i class="material-icons sidenav-trigger" style="cursor: pointer;" data-target="side-menu">menu</i>
             </span>
@@ -36,131 +33,99 @@
     <!-- side nav -->
     <ul id="side-menu" class="sidenav side-menu"></ul>
 
-    <!-- page content -->
-    <div id="positions-tab" class="container container-tab">
-        
-        <div id="scanner-page" class="container">
-
-            <div class="row">
-                <div class="col s12">
-                    <ul class="tabs tabs-fixed-width z-depth-1" style="border-radius: 10px;">
-                        <li class="tab col s4"><a class="active blue-text" href="#grid-tab">Grid</a></li>
-                        <li class="tab col s4"><a class="blue-text" href="#futures-tab">Futures</a></li>
-                        <li class="tab col s4"><a class="blue-text" href="#news-tab">News</a></li>
-                    </ul>
-                </div>
-
-                <div id="grid-tab" class="col s12">
-                    <div class="card white" style="border-radius: 15px; margin-top: 20px;">
-                        <div class="card-content">
-                            <span class="card-title grey-text text-darken-2" style="font-size: 1rem; font-weight: bold;">TOP 5 GRID OPPORTUNITIES</span>
-                            <table class="highlight responsive-table">
-                                <thead>
-                                    <tr>
-                                        <th>Asset</th>
-                                        <th>Volatility</th>
-                                        <th>Range (24h)</th>
-                                        <th class="right-align">Score</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><span class="strong">SOL</span>/USDT</td>
-                                        <td class="blue-text">+8.2%</td>
-                                        <td class="grey-text">142 - 155</td>
-                                        <td class="right-align"><span class="new badge green" data-badge-caption="">94</span></td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="strong">NEAR</span>/USDT</td>
-                                        <td class="blue-text">+6.5%</td>
-                                        <td class="grey-text">5.2 - 5.8</td>
-                                        <td class="right-align"><span class="new badge green" data-badge-caption="">88</span></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+    <div class="container">
+        <div class="row" style="margin-top: 20px; margin-bottom: 10px;">
+            <div class="col s12">
+                <div class="valign-wrapper" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h5 class="fw-bold blue-grey-text text-darken-4 mt-0" style="margin-bottom: 0;">Market Scanner</h5>
+                        <span class="stat-label">Last Scan: <span id="last-scan-time">2m ago</span></span>
                     </div>
-                </div>
-
-                <div id="futures-tab" class="col s12">
-                    <div class="card white" style="border-radius: 15px; margin-top: 20px;">
-                        <div class="card-content">
-                            <span class="card-title grey-text text-darken-2" style="font-size: 1rem; font-weight: bold;">FUTURES SIGNALS (LONG/SHORT)</span>
-                            <table class="highlight">
-                                <thead>
-                                    <tr>
-                                        <th>Asset</th>
-                                        <th>Signal</th>
-                                        <th>Strength</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><span class="strong">ETH</span>/USDT</td>
-                                        <td><span class="white-text green" style="padding: 2px 8px; border-radius: 4px;">LONG</span></td>
-                                        <td>
-                                            <div class="progress grey lighten-3" style="height: 6px;">
-                                                <div class="determinate green" style="width: 85%"></div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><span class="strong">LINK</span>/USDT</td>
-                                        <td><span class="white-text red" style="padding: 2px 8px; border-radius: 4px;">SHORT</span></td>
-                                        <td>
-                                            <div class="progress grey lighten-3" style="height: 6px;">
-                                                <div class="determinate red" style="width: 72%"></div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="news-tab" class="col s12">
-                    <ul class="collection" style="border: none; margin-top: 20px;">
-                        <li class="collection-item avatar white" style="border-radius: 15px; margin-bottom: 10px; border: 1px solid #eee;">
-                            <i class="material-icons circle orange">trending_up</i>
-                            <span class="title strong">Bitcoin ETF Inflows Surge</span>
-                            <p class="grey-text" style="font-size: 0.8rem;">Institutional demand hits new 3-month high...<br>
-                            <span class="blue-text">Sentiment: BULLISH</span>
-                            </p>
-                            <a href="#!" class="secondary-content grey-text"><small>5m ago</small></a>
-                        </li>
-                         <li class="collection-item avatar white" style="border-radius: 15px; margin-bottom: 10px; border: 1px solid #eee;">
-                            <i class="material-icons circle orange">trending_up</i>
-                            <span class="title strong">Bitcoin ETF Inflows Surge</span>
-                            <p class="grey-text" style="font-size: 0.8rem;">Institutional demand hits new 3-month high...<br>
-                            <span class="blue-text">Sentiment: BULLISH</span>
-                            </p>
-                            <a href="#!" class="secondary-content grey-text"><small>5m ago</small></a>
-                        </li>
-                    </ul>
+                    
+                    <button class="btn-floating btn-medium waves-effect waves-light blue darken-2 z-depth-1" onclick="rescanMarket()">
+                        <i class="material-icons">refresh</i>
+                    </button>
                 </div>
             </div>
         </div>
 
-    </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="card-panel white card-soft valign-wrapper" style="padding: 10px 15px; margin-top: 0;">
+                    <span class="badge red white-text" style="position: static; margin-right: 15px; height: 20px; line-height: 20px;">NEWS</span>
+                    <marquee class="grey-text text-darken-2" style="font-weight: 500; font-size: 0.85rem;">
+                        BTC approaching major resistance at $68.5k • Volatility increasing in ETH/USDT • Fed meeting minutes expected at 14:00 UTC
+                    </marquee>
+                </div>
+            </div>
+        </div>
 
-    <!-- add recipe side nav -->
-    <div id="side-form" class="sidenav side-form">
-        <form class="add-recipe container section">
-            <h6>New Recipe</h6>
-            <div class="divider"></div>
-            <div class="input-field">
-                <input placeholder="e.g. Ninja soup" id="title" type="text" class="validate">
-                <label for="title">Recipe Title</label>
+        <div class="row">
+            <div class="col s12" id="scanner-results">
+                
+                <div class="card white card-soft mb-5 active-trading-row">
+                    <div class="card-content" style="padding: 15px;">
+                        <div class="row mb-5 valign-wrapper">
+                            <div class="col s2">
+                                <span class="grey-text text-darken-2 fw-bold" style="font-size: 1.2rem;">#1</span>
+                            </div>
+                            <div class="col s6">
+                                <span class="asset-name">BTC/USDT</span>
+                                <span class="status-pill status-active ml-5">TRADING</span>
+                            </div>
+                            <div class="col s4 right-align">
+                                <span class="score-badge green lighten-4 green-text">88 Score</span>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-0 mt-10 border-top-light pt-10">
+                            <div class="col s4">
+                                <span class="stat-label">ATR (Vol)</span>
+                                <p class="stat-value green-text" style="font-size: 1rem;">1.24%</p>
+                            </div>
+                            <div class="col s4 center-align">
+                                <span class="stat-label">24h Range</span>
+                                <p class="stat-value" style="font-size: 0.85rem;">65k - 68k</p>
+                            </div>
+                            <div class="col s4 right-align">
+                                <button class="btn-flat blue-text waves-effect p-0" style="font-weight: 800;">SWITCH</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card white card-soft mb-5">
+                    <div class="card-content" style="padding: 15px;">
+                        <div class="row mb-5 valign-wrapper">
+                            <div class="col s2">
+                                <span class="grey-text text-lighten-1 fw-bold" style="font-size: 1.2rem;">#2</span>
+                            </div>
+                            <div class="col s6">
+                                <span class="asset-name">SOL/USDT</span>
+                            </div>
+                            <div class="col s4 right-align">
+                                <span class="score-badge orange lighten-4 orange-text">74 Score</span>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-0 mt-10 border-top-light pt-10">
+                            <div class="col s4">
+                                <span class="stat-label">ATR (Vol)</span>
+                                <p class="stat-value orange-text" style="font-size: 1rem;">0.85%</p>
+                            </div>
+                            <div class="col s4 center-align">
+                                <span class="stat-label">24h Range</span>
+                                <p class="stat-value" style="font-size: 0.85rem;">138 - 146</p>
+                            </div>
+                            <div class="col s4 right-align">
+                                <button class="btn btn-small blue darken-2 waves-effect br-10">START</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="input-field">
-                <input placeholder="e.g. Tofu, mushroom, garlic" id="ingredients" type="text" class="validate">
-                <label for="ingredients">Ingredients</label>
-            </div>
-            <div class="input-field center">
-                <button class="btn-small">Add</button>
-            </div>
-        </form>
+        </div>
     </div>
 
     <script src="/js/app.js"></script>
