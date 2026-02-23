@@ -59,7 +59,7 @@ var htmlText = '<div>'+
   '<li>'+
       '<div class="divider"></div>'+
   '</li>'+
-  '<li><a href="/" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
+  '<li><a href="/pages/profile.html" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
           '<i class="material-icons" style="height: 40px !important; line-height: 40px !important;">person_pin</i>Profile</a>'+
   '</li>'+
   '<li><a href="/pages/about.html" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
