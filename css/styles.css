@@ -876,3 +876,77 @@ input[type=range] + .thumb { background-color: var(--primary) !important; }
 .action-wrapper {
     padding-left: 10px;
 }
+
+.log-card {
+    transition: all 0.3s ease;
+    margin-bottom: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #fff;
+    border: 1px solid #f0f0f0;
+}
+
+.log-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.log-type-icon {
+    font-size: 20px !important;
+    margin-top: 2px;
+}
+
+.log-content { flex-grow: 1; }
+
+.log-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
+.log-pair {
+    font-weight: 800;
+    font-size: 0.75rem;
+    color: #1a3263;
+}
+
+.log-time-stamp {
+    font-size: 0.7rem;
+    color: #bbb;
+}
+
+.log-msg {
+    font-size: 0.85rem;
+    color: #444;
+}
+
+.log-profit {
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-top: 4px;
+    background: #f1f8e9;
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+/* Animation for new log entries */
+.new-log-anim {
+    animation: slideInFade 0.5s ease-out forwards;
+    border: 2px solid #e3f2fd !important; /* Temporary highlight for new logs */
+}
+
+@keyframes slideInFade {
+    0% {
+        opacity: 0;
+        transform: translateX(30px);
+        background-color: #fff9c4; /* Subtle yellow flash like a highlight */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        background-color: #ffffff;
+    }
+}
