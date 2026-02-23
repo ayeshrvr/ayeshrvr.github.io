@@ -135,7 +135,7 @@
 
             <li>
                 <div class="collapsible-header white card-soft mb-5 valign-wrapper">
-                    <i class="material-icons blue-text">smart_toy</i>Grid Strategy Templates
+                    <i class="material-icons green-text">grid_on</i>Grid Strategy Templates
                 </div>
                 <div class="collapsible-body white" style="padding: 15px;">
                     <p class="stat-label mb-15">Select Grid Strategy</p>
@@ -202,15 +202,97 @@
                 <div class="collapsible-header white card-soft mb-5 valign-wrapper">
                     <i class="material-icons red-text">gpp_maybe</i>Risk Management
                 </div>
-                <div class="collapsible-body white mb-10">
-                    <div class="row mb-0">
-                        <div class="col s12">
-                            <p class="stat-label">Max Drawdown (%)</p>
-                            <p class="range-field"><input type="range" min="1" max="20" value="5" /></p>
+                <div class="collapsible-body white" style="padding: 10px 15px;">    
+                    <div class="config-flex-row-vertical">
+                        <div class="valign-wrapper space-between mb-5">
+                            <div class="label-group">
+                                <span class="breaker-label grey-text text-darken-4">Max Drawdown</span>
+                                <small class="helper-text d-block">Hard stop for entire portfolio</small>
+                            </div>
+                            <span class="red-text fw-bold" id="drawdown-display">5%</span>
                         </div>
-                        <div class="input-field col s12">
-                            <input id="daily_loss" type="number" value="50">
-                            <label for="daily_loss">Daily Loss Limit ($)</label>
+                        <p class="range-field m-0">
+                            <input type="range" id="drawdown-slider" min="1" max="25" value="5" 
+                                oninput="document.getElementById('drawdown-display').innerText = this.value + '%'">
+                        </p>
+                    </div>
+
+                    <div class="config-flex-row">
+                        <div class="label-group">
+                            <span class="breaker-label grey-text text-darken-4">Daily Loss Limit</span>
+                            <small class="helper-text d-block">24h stop-loss threshold</small>
+                        </div>
+                        <div class="input-with-prefix">
+                            <span class="prefix red-text">$</span>
+                            <input type="number" value="50" class="browser-default capital-input" style="color: #d32f2f;">
+                        </div>
+                    </div>
+
+                    <div class="config-flex-row" style="border-bottom: none;">
+                        <div class="label-group">
+                            <span class="breaker-label grey-text text-darken-4">Position Size Limit</span>
+                            <small class="helper-text d-block">Max allocation per coin</small>
+                        </div>
+                        <div class="input-with-prefix">
+                            <span class="prefix">$</span>
+                            <input type="number" value="200" class="browser-default capital-input">
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <div class="collapsible-header white card-soft mb-5 valign-wrapper">
+                    <i class="material-icons blue-text">notifications_active</i>Notification Settings
+                </div>
+                <div class="collapsible-body white" style="padding: 10px 15px;">
+                        <div class="config-flex-row">
+                        <div class="label-group">
+                            <span class="breaker-label grey-text text-darken-4">Telegram Alerts</span>
+                            <small class="helper-text d-block">External bot communication</small>
+                        </div>
+                        <div class="switch">
+                            <label>
+                                Off
+                                <input type="checkbox" id="telegram-toggle" checked>
+                                <span class="lever"></span>
+                                On
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="config-flex-row-vertical">
+                        <span class="breaker-label grey-text text-darken-4 d-block mb-10">Alert Types</span>
+                        <div class="alert-type-container">
+                            <label class="notification-chip">
+                                <input type="checkbox" checked />
+                                <div class="chip-label">Fills</div>
+                            </label>
+                            
+                            <label class="notification-chip">
+                                <input type="checkbox" checked />
+                                <div class="chip-label">Errors</div>
+                            </label>
+                            
+                            <label class="notification-chip">
+                                <input type="checkbox" />
+                                <div class="chip-label">Daily Summary</div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="config-flex-row" style="border-bottom: none;">
+                        <div class="label-group">
+                            <span class="breaker-label grey-text text-darken-4">Alert Frequency</span>
+                            <small class="helper-text d-block">Batching window for messages</small>
+                        </div>
+                        <div class="input-field m-0 inline-select">
+                            <select class="browser-default custom-select">
+                                <option value="instant" selected>Instant</option>
+                                <option value="15m">Every 15m</option>
+                                <option value="hourly">Hourly</option>
+                                <option value="daily">Daily</option>
+                            </select>
                         </div>
                     </div>
                 </div>
