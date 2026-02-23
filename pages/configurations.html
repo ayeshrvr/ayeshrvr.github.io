@@ -302,18 +302,59 @@
                 <div class="collapsible-header white card-soft mb-5 valign-wrapper">
                     <i class="material-icons grey-text">account_balance</i>Exchange & API
                 </div>
-                <div class="collapsible-body white mb-10">
-                    <div class="row mb-0">
-                        <div class="input-field col s12">
-                            <p class="stat-label">Demo (Paper Trading)</p>
-                            <div class="switch"><label>Live <input type="checkbox" checked> <span class="lever"></span> Demo</label></div>
+                <div class="collapsible-body white" style="padding: 10px 15px;">    
+                    <div class="config-flex-row">
+                        <div class="label-group">
+                            <span class="breaker-label grey-text text-darken-4">Environment</span>
+                            <small id="env-label" class="helper-text d-block blue-text fw-600">LIVE EXCHANGE ACTIVE</small>
                         </div>
-                        <div class="input-field col s12">
-                            <input id="api_key" type="password" value="****************">
-                            <label for="api_key">API Key</label>
+                        <div class="switch">
+                            <label>
+                                Live
+                                <input type="checkbox" id="demo-mode-toggle" onchange="toggleApiEnvironment(this.checked)">
+                                <span class="lever"></span>
+                                Demo
+                            </label>
                         </div>
-                        <button class="btn-flat blue-text waves-effect">Test Connection</button>
                     </div>
+
+                    <div id="live-api-keys">
+                        <div class="api-input-group mb-15">
+                            <span class="breaker-label grey-text text-darken-4 d-block mb-5">Live API Key</span>
+                            <div class="input-field-custom">
+                                <input type="password" id="live-api-key" placeholder="Enter Live Key" class="browser-default">
+                                <i class="material-icons visibility-toggle" onclick="toggleVisibility('live-api-key')">visibility</i>
+                            </div>
+                        </div>
+                        <div class="api-input-group mb-20">
+                            <span class="breaker-label grey-text text-darken-4 d-block mb-5">Live Secret Key</span>
+                            <div class="input-field-custom">
+                                <input type="password" id="live-secret-key" placeholder="Enter Live Secret" class="browser-default">
+                                <i class="material-icons visibility-toggle" onclick="toggleVisibility('live-secret-key')">visibility</i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="demo-api-keys" style="display: none;">
+                        <div class="api-input-group mb-15">
+                            <span class="breaker-label orange-text text-darken-3 d-block mb-5">Testnet API Key</span>
+                            <div class="input-field-custom border-orange">
+                                <input type="password" id="demo-api-key" placeholder="Enter Testnet Key" class="browser-default">
+                                <i class="material-icons visibility-toggle" onclick="toggleVisibility('demo-api-key')">visibility</i>
+                            </div>
+                        </div>
+                        <div class="api-input-group mb-20">
+                            <span class="breaker-label orange-text text-darken-3 d-block mb-5">Testnet Secret Key</span>
+                            <div class="input-field-custom border-orange">
+                                <input type="password" id="demo-secret-key" placeholder="Enter Testnet Secret" class="browser-default">
+                                <i class="material-icons visibility-toggle" onclick="toggleVisibility('demo-secret-key')">visibility</i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="test-connection-btn" class="btn blue darken-3 waves-effect btn-block" onclick="runTestConnection()" style="width: 100%; border-radius: 10px; height: 45px;">
+                        <span id="btn-text">TEST CONNECTION</span>
+                    </button>
                 </div>
             </li>
         </ul>
