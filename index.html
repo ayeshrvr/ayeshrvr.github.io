@@ -90,61 +90,28 @@
 
         <div class="row">
             <div class="col s12">
-                <div class="card white card-soft">
-                    <div class="card-content" style="padding: 0;">
-                        <div style="padding: 15px 20px; border-bottom: 1px solid #f0f0f0;">
-                            <span class="card-title strong" style="font-size: 1rem; margin: 0;">ACTIVE GRIDS</span>
+                <div class="card card-soft">
+                    <div class="card-content">
+                        <span class="card-title grey-text text-darken-2" style="font-size: 0.9rem; font-weight: 800;">ACTIVE GRIDS</span>
+                        
+                        <div id="active-grids-list">
+                            <div class="progress"><div class="indeterminate"></div></div>
                         </div>
 
-                        <div class="grid-row waves-effect" style="display: block; width: 100%;">
-                            <div class="row mb-0 valign-wrapper">
-                                <div class="col s6">
-                                    <span class="asset-name">BNB/USDT</span> <span class="grey-text" style="font-size: 0.8rem;">$613.00</span>
-                                    <br><span class="green-text" style="font-size: 0.7rem;">↑ 0.5% 24h</span>
-                                </div>
-                                <div class="col s6 right-align">
-                                    <span class="pnl-mini green-text">+$15.20</span>
-                                    <br><span class="score-badge">SCORE: 66</span>
-                                </div>
-                            </div>
-                            <div class="row mb-0" style="margin-top: 8px;">
-                                <div class="col s12 grey-text" style="font-size: 0.75rem;">
-                                    <i class="material-icons tiny" style="vertical-align: middle;">list</i> 10 Orders | 12 Filled
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="grid-row waves-effect" style="display: block; width: 100%;">
-                            <div class="row mb-0 valign-wrapper">
-                                <div class="col s6">
-                                    <span class="asset-name">UNI/USDT</span> <span class="grey-text" style="font-size: 0.8rem;">$3.47</span>
-                                    <br><span class="red-text" style="font-size: 0.7rem;">↓ 0.2% 24h</span>
-                                </div>
-                                <div class="col s6 right-align">
-                                    <span class="pnl-mini green-text">+$10.05</span>
-                                    <br><span class="score-badge">SCORE: 63</span>
-                                </div>
-                            </div>
-                            <div class="row mb-0" style="margin-top: 8px;">
-                                <div class="col s12 grey-text" style="font-size: 0.75rem;">
-                                    <i class="material-icons tiny" style="vertical-align: middle;">list</i> 10 Orders | 8 Filled
-                                </div>
-                            </div>
-                        </div>
                     </div>
-                    
                     <div class="card-action center-align" style="border-top: 1px solid #f0f0f0;">
-                        <a href="grids.html" class="blue-text text-darken-2 strong" style="margin-right: 20px;">VIEW GRID DETAILS</a>
-                        <a href="scanner.html" class="blue-text text-darken-2 strong">MARKET SCANNER</a>
+                        <a href="/pages/grid-status.html" class="blue-text text-darken-2 strong">VIEW GRID DETAILS</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="text/javascript" src="/js/dbConnect.js"></script>
+    <script type="text/javascript" src="/js/activeGrids.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/ui.js"></script>
-    <script type="text/javascript" src="/js/dbConnect.js"></script>
     <script src="/js/navigation.js"></script>
     <script src="/js/loader.js"></script>
     <script src="/js/charts.js"></script>

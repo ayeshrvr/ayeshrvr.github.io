@@ -32,7 +32,16 @@ nav { background: var(--primary); border-bottom: 8px solid var(--secondary); }
 .grid-row { border-bottom: 1px solid #f0f0f0; padding: 12px 15px; display: flex; align-items: center; justify-content: space-between; }
 .asset-name { font-weight: 800; font-size: 1rem; color: #263238; }
 .pnl-mini { font-weight: 700; font-size: 0.9rem; }
-.score-badge { background: #eceff1; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; color: #546e7a; font-weight: bold; }
+.score-badge {
+    background: #eceff1;
+    color: #546e7a;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 800;
+    display: inline-block;
+    margin-top: 4px;
+}
 
 /* Layout Helpers */
 .flex-column { display: flex; flex-direction: column; }
