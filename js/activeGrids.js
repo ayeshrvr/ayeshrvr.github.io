@@ -1,51 +1,46 @@
 /**
- * activeGrids.js - Dashboard Edition
- * Dynamically renders the 'Active Grids' list based on Supabase data
+ * activeGrids.js - Multi-Page Edition
  */
-
 let supabaseClient;
-const gridContainerId = 'active-grids-list'; // The ID in your index.html
 
 document.addEventListener('DOMContentLoaded', () => {
-    initDashboardGrids();
+    initGridSystem();
 });
 
-async function initDashboardGrids() {
+async function initGridSystem() {
     if (typeof supabase !== 'undefined' && typeof SB_URL !== 'undefined') {
         supabaseClient = supabase.createClient(SB_URL, SB_KEY);
-        
-        // Initial Fetch
-        await refreshDashboardList();
-        
-        // Realtime Subscription
-        setupDashboardSubscription();
+        await refreshGridData();
+        setupSubscription();
     }
 }
 
-async function refreshDashboardList() {
-    const { data, error } = await supabaseClient
-        .from('active_grids')
-        .select('*');
-
-    if (!error) {
-        renderGridList(data);
-    }
+async function refreshGridData() {
+    const { data, error } = await supabaseClient.from('active_grids').select('*');
+    if (!error) renderUI(data);
 }
 
-function setupDashboardSubscription() {
+function setupSubscription() {
     supabaseClient
-        .channel('dashboard_sync')
+        .channel('grid_global_sync')
         .on('postgres_changes', { event: '*', schema: 'public', table: 'active_grids' }, () => {
-            // On any change (insert, update, delete), refresh the whole list to keep it simple
-            refreshDashboardList();
+            refreshGridData();
         })
         .subscribe();
 }
 
-function renderGridList(grids) {
-    const container = document.getElementById(gridContainerId);
-    if (!container) return;
+function renderUI(grids) {
+    // 1. Handle Dashboard Summary
+    const dashboardContainer = document.getElementById('active-grids-list');
+    if (dashboardContainer) renderDashboardList(grids, dashboardContainer);
 
+    // 2. Handle Grid Status Overview
+    const statusContainer = document.getElementById('grid-status-container');
+    if (statusContainer) renderStatusOverview(grids, statusContainer);
+}
+
+// --- Dashboard Rendering ---
+function renderDashboardList(grids, container) {
     if (!grids || grids.length === 0) {
         container.innerHTML = `
             <div class="center-align grey-text" style="padding: 20px;">
@@ -54,8 +49,6 @@ function renderGridList(grids) {
             </div>`;
         return;
     }
-
-    // Map through grids and create the HTML based on your index.html structure
     container.innerHTML = grids.map(grid => {
         const data = grid.grid_data;
         const symbolId = grid.symbol.replace('/', '');
@@ -84,5 +77,69 @@ function renderGridList(grids) {
                 </div>
             </div>
         `;
+    }).join('');
+}
+
+// --- Grid Status Overview Rendering (The Progress Bar View) ---
+function renderStatusOverview(grids, container) {
+    if (!grids || grids.length === 0) {
+        container.innerHTML = `
+            <div class="center-align grey-text" style="padding: 20px;">
+                <i class="material-icons large">info_outline</i>
+                <p>No active grids running at the moment.</p>
+            </div>`;
+        return;
+    }
+
+    container.innerHTML = grids.map(grid => {
+        const data = grid.grid_data;
+        
+        // 1. Total Safety Range (The Grey Track)
+        const totalMin = data.range.lower;
+        const totalMax = data.range.upper;
+        const totalSpan = totalMax - totalMin;
+
+        // 2. Active Grid Range (The Blue Bar)
+        // If your bot doesn't send these yet, we'll fallback to a 20% width around price
+        const activeMin = data.range.active_lower || (data.current_price - (totalSpan * 0.1));
+        const activeMax = data.range.active_upper || (data.current_price + (totalSpan * 0.1));
+
+        // 3. Calculate Styles
+        const leftVal = ((activeMin - totalMin) / totalSpan) * 100;
+        const widthVal = ((activeMax - activeMin) / totalSpan) * 100;
+
+        return `
+            <div class="card white card-soft waves-effect grid-main-row" onclick="location.href='grid-details.html?coin=${grid.symbol}'" style="display: block; width: 100%; margin-bottom: 15px;">
+                <div class="card-content" style="padding: 15px;">
+                    <div class="row mb-5 valign-wrapper">
+                        <div class="col s6">
+                            <span class="asset-name">${grid.symbol}</span>
+                            <span class="status-pill status-active" style="margin-left: 10px;">Active</span>
+                        </div>
+                        <div class="col s6 right-align">
+                            <span class="pnl-text green-text">+$${grid.pnl_24h || '0.00'}</span>
+                        </div>
+                    </div>
+
+                    <div class="row mb-5">
+                        <div class="col s6">
+                            <span class="stat-label">Price:</span> <span class="fw-bold">$${data.current_price}</span>
+                        </div>
+                        <div class="col s6 right-align">
+                            <span class="score-badge">SCORE: ${grid.score}</span>
+                        </div>
+                    </div>
+
+                    <div class="progress grey lighten-4" style="height: 4px; margin: 10px 0;">
+                        <div class="determinate blue" style="width: ${widthVal}%; left: ${leftVal}%"></div>
+                    </div>
+                    
+                    <div class="row mb-0" style="font-size: 0.75rem; color: #757575;">
+                        <div class="col s4">Range: ${data.range.lower} - ${data.range.upper}</div>
+                        <div class="col s4 center-align">Orders: ${data.counters.buy_orders}B / ${data.counters.sell_orders}S</div>
+                        <div class="col s4 right-align">Filled Today: ${data.counters.total_filled_today}</div>
+                    </div>
+                </div>
+            </div>`;
     }).join('');
 }

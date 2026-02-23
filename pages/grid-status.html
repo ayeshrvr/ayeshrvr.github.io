@@ -42,79 +42,16 @@
         </div>
 
         <div class="row">
-            <div class="col s12">
-                <div class="card white card-soft waves-effect grid-main-row" onclick="location.href='grid-details.html?coin=BNB'" style="display: block; width: 100%; margin-bottom: 15px;">
-                    <div class="card-content" style="padding: 15px;">
-                        <div class="row mb-5 valign-wrapper">
-                            <div class="col s6">
-                                <span class="asset-name">BNB/USDT</span>
-                                <span class="status-pill status-active" style="margin-left: 10px;">Active</span>
-                            </div>
-                            <div class="col s6 right-align">
-                                <span class="pnl-text green-text">+$15.20</span>
-                            </div>
-                        </div>
-
-                        <div class="row mb-5">
-                            <div class="col s6">
-                                <span class="stat-label">Price:</span> <span class="fw-bold">$613.00</span>
-                            </div>
-                            <div class="col s6 right-align">
-                                <span class="score-badge">SCORE: 66</span>
-                            </div>
-                        </div>
-
-                        <div class="progress grey lighten-4" style="height: 4px; margin: 10px 0;">
-                            <div class="determinate blue" style="width: 45%; left: 20%;"></div>
-                        </div>
-                        
-                        <div class="row mb-0" style="font-size: 0.75rem; color: #757575;">
-                            <div class="col s4">Range: 580 - 650</div>
-                            <div class="col s4 center-align">Orders: 4B / 6S</div>
-                            <div class="col s4 right-align">Filled Today: 12</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card white card-soft waves-effect grid-main-row" onclick="location.href='grid-details.html?coin=ETH'" style="display: block; width: 100%; margin-bottom: 15px;">
-                    <div class="card-content" style="padding: 15px;">
-                        <div class="row mb-5 valign-wrapper">
-                            <div class="col s6">
-                                <span class="asset-name">ETH/USDT</span>
-                                <span class="status-pill status-active" style="margin-left: 10px;">Active</span>
-                            </div>
-                            <div class="col s6 right-align">
-                                <span class="pnl-text green-text">+$7.50</span>
-                            </div>
-                        </div>
-
-                        <div class="row mb-5">
-                            <div class="col s6">
-                                <span class="stat-label">Price:</span> <span class="fw-bold">$1,949.00</span>
-                            </div>
-                            <div class="col s6 right-align">
-                                <span class="score-badge">SCORE: 63</span>
-                            </div>
-                        </div>
-
-                        <div class="progress grey lighten-4" style="height: 4px; margin: 10px 0;">
-                            <div class="determinate blue" style="width: 30%; left: 50%;"></div>
-                        </div>
-
-                        <div class="row mb-0" style="font-size: 0.75rem; color: #757575;">
-                            <div class="col s4">Range: 1800 - 2100</div>
-                            <div class="col s4 center-align">Orders: 5B / 5S</div>
-                            <div class="col s4 right-align">Filled Today: 6</div>
-                        </div>
-                    </div>
-                </div>
+            <div id="grid-status-container" class="col s12">
             </div>
         </div>
     </div>
 
+     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="text/javascript" src="/js/dbConnect.js"></script>
+    <script type="text/javascript" src="/js/activeGrids.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/ui.js"></script>
-    <script type="text/javascript" src="/js/dbConnect.js"></script>
     <script src="/js/navigation.js"></script>
     <script src="/js/loader.js"></script>
     <script src="/js/charts.js"></script>
