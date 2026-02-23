@@ -109,7 +109,7 @@
 
                     <div class="config-flex-row-vertical">
                         <div class="valign-wrapper space-between mb-5">
-                            <span class="breaker-label grey-text text-darken-4">Min Grid Score</span>
+                            <span class="breaker-label grey-text text-darken-4">Min Grid Score&nbsp;</span>
                             <span class="blue-text fw-bold" id="score-display">70</span>
                         </div>
                         <p class="range-field m-0">
@@ -128,6 +128,71 @@
                                 <option value="30m">30m</option>
                                 <option value="1h">1h</option>
                             </select>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <div class="collapsible-header white card-soft mb-5 valign-wrapper">
+                    <i class="material-icons blue-text">smart_toy</i>Grid Strategy Templates
+                </div>
+                <div class="collapsible-body white" style="padding: 15px;">
+                    <p class="stat-label mb-15">Select Grid Strategy</p>
+                    
+                    <div class="template-selection-grid">
+                        <label class="tmpl-card-wrapper">
+                            <input type="radio" name="grid-template" value="conservative" checked onclick="toggleCustomSettings(false)">
+                            <div class="tmpl-card">
+                                <i class="material-icons green-text">shield</i>
+                                <span class="tmpl-name">Conservative</span>
+                                <span class="tmpl-desc">Safe • 0.8% Spacing</span>
+                            </div>
+                        </label>
+
+                        <label class="tmpl-card-wrapper">
+                            <input type="radio" name="grid-template" value="balanced" onclick="toggleCustomSettings(false)">
+                            <div class="tmpl-card">
+                                <i class="material-icons blue-text">balance</i>
+                                <span class="tmpl-name">Balanced</span>
+                                <span class="tmpl-desc">Steady • 0.5% Spacing</span>
+                            </div>
+                        </label>
+
+                        <label class="tmpl-card-wrapper">
+                            <input type="radio" name="grid-template" value="aggressive" onclick="toggleCustomSettings(false)">
+                            <div class="tmpl-card">
+                                <i class="material-icons red-text">bolt</i>
+                                <span class="tmpl-name">Aggressive</span>
+                                <span class="tmpl-desc">Fast • 0.3% Spacing</span>
+                            </div>
+                        </label>
+
+                        <label class="tmpl-card-wrapper">
+                            <input type="radio" name="grid-template" value="custom" id="custom-tmpl-radio" onclick="toggleCustomSettings(true)">
+                            <div class="tmpl-card">
+                                <i class="material-icons grey-text text-darken-2">tune</i>
+                                <span class="tmpl-name">Custom</span>
+                                <span class="tmpl-desc">Manual Control</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div id="custom-settings-area" style="display: none; margin-top: 20px; padding-top: 15px; border-top: 1px dashed #e0e0e0;">
+                        <div class="config-flex-row">
+                            <span class="breaker-label grey-text text-darken-4">Grid Spacing (%)</span>
+                            <div class="input-with-prefix">
+                                <input type="number" step="0.1" value="0.5" class="browser-default capital-input" style="width: 50px !important;">
+                                <span class="suffix" style="font-weight: bold; margin-left: 5px;">%</span>
+                            </div>
+                        </div>
+                        <div class="config-flex-row">
+                            <span class="breaker-label grey-text text-darken-4">Number of Grids</span>
+                            <div class="segmented-control">
+                                <input type="radio" name="custom-grids" id="g10" value="10" checked><label for="g10">10</label>
+                                <input type="radio" name="custom-grids" id="g20" value="20"><label for="g20">20</label>
+                                <input type="radio" name="custom-grids" id="g50" value="50"><label for="g50">50</label>
+                            </div>
                         </div>
                     </div>
                 </div>

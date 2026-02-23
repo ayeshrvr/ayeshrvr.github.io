@@ -5,3 +5,12 @@ document.addEventListener('DOMContentLoaded', function() {
         accordion: true // Set to false if you want multiple sections open at once
     });
 });
+
+function toggleCustomSettings(show) {
+    const customArea = document.getElementById('custom-settings-area');
+    if (show) {
+        customArea.style.display = 'block';
+    } else {
+        customArea.style.display = 'none';
+    }
+}

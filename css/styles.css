@@ -464,3 +464,63 @@ input[type=range] + .thumb { background-color: var(--primary) !important; }
     background: #fff;
     font-size: 0.9rem;
 }
+
+/* Template Grid Layout */
+.template-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2x2 grid on mobile */
+    gap: 12px;
+}
+
+/* Hide the actual radio button */
+.tmpl-card-wrapper input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* The Card Style */
+.tmpl-card {
+    background: #f8f9fa;
+    border: 2px solid #f0f0f0;
+    border-radius: 12px;
+    padding: 15px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+.tmpl-name {
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #37474f;
+    margin-top: 5px;
+}
+
+.tmpl-desc {
+    font-size: 0.7rem;
+    color: #9e9e9e;
+}
+
+/* Selected State */
+.tmpl-card-wrapper input:checked + .tmpl-card {
+    background: #fff;
+    border-color: var(--primary); /* Using your primary blue */
+    box-shadow: 0 4px 12px rgba(26, 50, 99, 0.1);
+}
+
+.tmpl-card-wrapper input:checked + .tmpl-card i {
+    transform: scale(1.1);
+}
+
+/* Custom Settings Animation */
+#custom-settings-area {
+    animation: fadeInDown 0.3s ease-out;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
