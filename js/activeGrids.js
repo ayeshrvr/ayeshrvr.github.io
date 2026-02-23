@@ -135,11 +135,28 @@ function renderStatusOverview(grids, container) {
                     </div>
                     
                     <div class="row mb-0" style="font-size: 0.75rem; color: #757575;">
-                        <div class="col s4">Range: ${data.range.lower} - ${data.range.upper}</div>
+                        <div class="col s4">Range: ${formatSmartPrice(data.range.lower)} - ${formatSmartPrice(data.range.upper)}</div>
                         <div class="col s4 center-align">Orders: ${data.counters.buy_orders}B / ${data.counters.sell_orders}S</div>
                         <div class="col s4 right-align">Filled Today: ${data.counters.total_filled_today}</div>
                     </div>
                 </div>
             </div>`;
     }).join('');
+}
+
+function formatSmartPrice(value) {
+    const num = Number(value);
+    
+    // If it's a whole number (like 1200), just show the number
+    if (Number.isInteger(num)) {
+        return num.toLocaleString(); // Adds commas, e.g., 1,200
+    }
+    
+    // If it's a large price (> $100), 2 decimals is enough
+    if (num > 100) {
+        return num.toFixed(2);
+    }
+    
+    // For small prices, show up to 5 decimals
+    return num.toFixed(5);
 }
