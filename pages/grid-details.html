@@ -33,108 +33,63 @@
     <!-- side nav -->
     <ul id="side-menu" class="sidenav side-menu"></ul>
 
-    <div id="" class="container">
-        <div class="row">
-            <div class="col s12">
-                <div class="card white card-soft overflow-hidden">
-                    <div class="card-content p-0">
-                        <div style="padding: 15px 20px; display: flex; justify-content: space-between; align-items: center;">
-                            <span class="stat-label">Live Grid Visualization (15m Trail)</span>
-                            <span class="score-badge">UPDATES: 30s</span>
-                        </div>
-
-                        <div class="ladder-container grey lighten-5" style="height: 400px; position: relative;">
-                            <svg id="live-chart" width="100%" height="100%" style="position: absolute;">
-                                <defs>
-                                    <linearGradient id="chart-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                        <stop offset="0%" style="stop-color:var(--primary); stop-opacity:1" />
-                                        <stop offset="100%" style="stop-color:var(--primary); stop-opacity:0" />
-                                    </linearGradient>
-                                </defs>
-
-                                <g id="grid-levels-group"></g>
-
-                                <path id="price-fill" d="" fill="url(#chart-gradient)" opacity="0.1" />
-                                <path id="price-path" d="" fill="none" stroke="var(--primary)" stroke-width="3" />
-                            </svg>
-                            
-                            <div id="grid-labels-container" class="ladder-labels"></div>
-
-                            <div id="price-head" class="price-bubble blue darken-2" style="position: absolute; right: 10px;">
-                                -- <i class="material-icons tiny">navigation</i>
-                            </div>
-                        </div>
-                    
-                    <div class="card-action" style="background: #fafafa;">
-                        <div class="row mb-0 center-align">
-                            <div class="col s4 border-right">
-                                <span class="stat-label">Upper Limit</span>
-                                <p class="fw-bold">69,000</p>
-                            </div>
-                            <div class="col s4 border-right">
-                                <span class="stat-label">Current</span>
-                                <p class="fw-bold blue-text">66,420</p>
-                            </div>
-                            <div class="col s4">
-                                <span class="stat-label">Lower Limit</span>
-                                <p class="fw-bold">64,500</p>
-                            </div>
-                        </div>
+    <div class="container section">
+        <div class="card card-soft no-margin-bottom">
+            <div class="card-content" style="padding: 15px;">
+                <div class="row mb-0 valign-wrapper">
+                    <div class="col s6">
+                        <span id="coin-symbol" class="fw-bold blue-grey-text text-darken-4" style="font-size: 1.2rem;">---/---</span>
+                        <span id="current-price-header" class="blue-text text-darken-4 fw-bold" style="font-size: 1.2rem; margin-left: 8px;">$0.000</span>
                     </div>
+                    <div class="col s6 right-align">
+                        <span class="stat-label-inline">U: <span id="upper-limit-label" class="grey-text text-darken-4">0.00</span></span>
+                        <span class="stat-label-inline" style="margin-left: 10px;">L: <span id="lower-limit-label" class="grey-text text-darken-4">0.00</span></span>
+                    </div>
+                </div>
+
+                <div class="chart-container" style="position: relative; height: 320px; margin-top: 15px;">
+                    <canvas id="priceChart"></canvas>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col s12">
-                <div class="card white card-soft">
+                <div class="card card-soft">
                     <div class="card-content">
-                        <span class="card-title strong mb-5" style="font-size: 1rem;">Performance Insights</span>
-                        
-                        <div class="row mb-0">
-                            <div class="col s4 border-right-light">
-                                <div class="mt-10">
-                                    <span class="stat-label">Capital</span>
-                                    <p class="stat-value" id="capital-allocated">$500.00</p>
-                                </div>
-                                <div class="mt-10">
-                                    <span class="stat-label">Efficiency</span>
-                                    <p class="stat-value green-text" id="grid-efficiency">84.2%</p>
-                                </div>
-                            </div>
-
-                            <div class="col s4 border-right-light">
-                                <div class="mt-10">
-                                    <span class="stat-label">Volatility</span>
-                                    <p class="stat-value" id="vol-category">High</p>
-                                </div>
-                                <div class="mt-10">
-                                    <span class="stat-label">Trades</span>
-                                    <p class="stat-value" id="trades-completed">142</p>
-                                </div>
-                            </div>
-
+                        <span class="card-title fw-bold" style="font-size: 1rem;">Performance Insights</span>
+                        <div class="row mt-15">
                             <div class="col s4">
-                                <div class="mt-10">
-                                    <span class="stat-label">Grid Perf.</span>
-                                    <p class="stat-value green-text" id="grid-perf">+2.4%</p>
-                                </div>
-                                <div class="mt-10">
-                                    <span class="stat-label">Avg. Profit</span>
-                                    <p class="stat-value" id="avg-profit">$0.85</p>
-                                </div>
+                                <span class="stat-label">Volatility</span>
+                                <p class="stat-value" id="vol-category">High</p>
+                                <span class="stat-label mt-10">Efficiency</span>
+                                <p class="stat-value green-text" id="efficiency-percent">0%</p>
+                            </div>
+                            <div class="col s4">
+                                <span class="stat-label">Grid Perf.</span>
+                                <p class="stat-value green-text" id="grid-perf">+0.0%</p>
+                                <span class="stat-label mt-10">Trades</span>
+                                <p class="stat-value" id="trades-completed">0</p>
+                            </div>
+                            <div class="col s4">
+                                <span class="stat-label">Avg. Profit</span>
+                                <p class="stat-value" id="avg-profit">$0.00</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="/js/dbConnect.js"></script>
+    <script src="/js/notifications.js"></script>
+    <script src="/js/grid-details.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/ui.js"></script>
-    <script type="text/javascript" src="/js/dbConnect.js"></script>
     <script src="/js/navigation.js"></script>
     <script src="/js/loader.js"></script>
     <script src="/js/grid-details.js"></script>

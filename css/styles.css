@@ -1000,3 +1000,51 @@ input[type=range] + .thumb { background-color: var(--primary) !important; }
 .card-content .valign-wrapper {
     align-items: flex-start !important;
 }
+
+/* grid-details chart specific styles */
+.chart-container {
+    position: relative;
+    height: 300px; /* Fixed height for mobile stability */
+    width: 100%;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: #9e9e9e;
+    display: block;
+    text-transform: uppercase;
+}
+
+.stat-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 0;
+}
+
+/* Color indicators for orders */
+.buy-text { color: var(--success); }
+.sell-text { color: var(--danger); }
+
+/* Consolidation Styles */
+.no-margin-bottom {
+    margin-bottom: 0 !important;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.stat-label-inline {
+    font-size: 0.75rem;
+    color: #9e9e9e;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.stat-label-inline span {
+    font-size: 0.85rem;
+}
+
+/* Ensure chart container fits tightly */
+.chart-container {
+    overflow: hidden;
+}

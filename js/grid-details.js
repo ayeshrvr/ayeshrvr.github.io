@@ -1,116 +1,116 @@
-// Configuration
-const MAX_POINTS = 30; 
-let priceHistory = []; 
+/**
+ * grid-details.js - Live Grid Visualization
+ */
+let detailChart;
 
-// Mock Data for Binding Reference
-const activeGrid = {
-    sells: [68000, 67500, 67000, 66500],
-    buys: [65500, 65000, 64500, 64000],
-    min: 63500,
-    max: 68500,
-    stats: {
-        capital: 500.00,
-        volatility: "High",
-        performance: "+2.4%",
-        trades: 142,
-        avgProfit: 0.85,
-        efficiency: "84.2%"
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.supabaseClient) {
+        initGridDetails();
+    } else {
+        window.addEventListener('supabaseReady', initGridDetails);
     }
-};
-
-document.addEventListener('DOMContentLoaded', function() {
-    initChartDimensions();
-    generateSampleData(66000);
-    renderGridChart(activeGrid.min, activeGrid.max);
-    bindPerformanceStats();
-    
-    setInterval(() => {
-        const lastPrice = priceHistory[0];
-        const nextPrice = lastPrice + (Math.random() * 200 - 100);
-        updateGridChart(nextPrice, activeGrid.min, activeGrid.max);
-    }, 30000); 
 });
 
-function initChartDimensions() {
-    const svg = document.getElementById('live-chart');
-    if (svg) svg.setAttribute('viewBox', '0 0 1000 400');
+async function initGridDetails() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const symbol = urlParams.get('coin') || 'INJ/USDT';
+    
+    // Initial Data Load
+    await refreshGridDetails(symbol);
+
+    // Real-time subscription for this specific coin
+    window.supabaseClient
+        .channel(`details-${symbol}`)
+        .on('postgres_changes', { 
+            event: 'UPDATE', 
+            schema: 'public', 
+            table: 'active_grids',
+            filter: `symbol=eq.${symbol}` 
+        }, payload => {
+            renderPage(payload.new);
+        })
+        .subscribe();
 }
 
-function generateSampleData(startPrice) {
-    let current = startPrice;
-    for (let i = 0; i < MAX_POINTS; i++) {
-        current += (Math.random() * 150 - 75);
-        priceHistory.push(current);
-    }
+async function refreshGridDetails(symbol) {
+    const { data, error } = await window.supabaseClient
+        .from('active_grids')
+        .select('*')
+        .eq('symbol', symbol)
+        .single();
+
+    if (!error && data) renderPage(data);
 }
 
-function updateGridChart(currentPrice, minGrid, maxGrid) {
-    priceHistory.unshift(currentPrice);
-    if (priceHistory.length > MAX_POINTS) priceHistory.pop();
-    renderGridChart(minGrid, maxGrid);
+function renderPage(grid) {
+    const data = grid.grid_data;
+
+    // 1. Update Header (Symbol, Price, and Limits)
+    document.getElementById('coin-symbol').innerText = grid.symbol;
+    document.getElementById('current-price-header').innerText = `$${data.current_price}`;
+    document.getElementById('upper-limit-label').innerText = data.range.upper;
+    document.getElementById('lower-limit-label').innerText = data.range.lower;
+
+    // 2. Update Performance Insights
+    document.getElementById('grid-perf').innerText = data.insights.avg_profit;
+    document.getElementById('vol-category').innerText = data.insights.volatility;
+    document.getElementById('trades-completed').innerText = data.counters.total_filled_today;
+    document.getElementById('efficiency-percent').innerText = data.insights.efficiency;
+
+    // 3. Render Chart with 8 Open Orders
+    updateChart(data);
 }
 
-function renderGridChart(minGrid, maxGrid) {
-    const svgWidth = 1000, svgHeight = 400;
-    const pathElement = document.getElementById('price-path');
-    const fillElement = document.getElementById('price-fill');
-    const headElement = document.getElementById('price-head');
-    const gridGroup = document.getElementById('grid-levels-group');
-    const labelContainer = document.getElementById('grid-labels-container');
-
-    if (gridGroup) gridGroup.innerHTML = '';
-    if (labelContainer) labelContainer.innerHTML = '';
-
-    activeGrid.sells.forEach(p => drawGridLine(p, 'sell', minGrid, maxGrid));
-    activeGrid.buys.forEach(p => drawGridLine(p, 'buy', minGrid, maxGrid));
-
-    let points = [];
-    priceHistory.forEach((price, i) => {
-        let x = svgWidth - (i * (svgWidth / (MAX_POINTS - 1)));
-        let y = svgHeight - ((price - minGrid) / (maxGrid - minGrid) * svgHeight);
-        y = Math.max(10, Math.min(y, svgHeight - 10));
-        points.push(`${x},${y}`);
-        
-        if (i === 0 && headElement) {
-            headElement.style.top = (y - 15) + "px";
-            headElement.innerHTML = `${Math.floor(price).toLocaleString()} <i class="material-icons tiny">navigation</i>`;
-        }
+function updateChart(data) {
+    const ctx = document.getElementById('priceChart').getContext('2d');
+    
+    const annotations = {};
+    // Loop through the 8 open orders from the JSON
+    data.open_orders.forEach((order, i) => {
+        const isBuy = order.side === 'buy';
+        annotations[`line${i}`] = {
+            type: 'line',
+            yMin: order.price,
+            yMax: order.price,
+            borderColor: isBuy ? 'rgba(38, 166, 154, 0.4)' : 'rgba(239, 83, 80, 0.4)',
+            borderWidth: 1,
+            borderDash: [5, 5],
+            label: {
+                display: true,
+                content: order.price,
+                position: 'end',
+                backgroundColor: isBuy ? '#26a69a' : '#ef5350',
+                font: { size: 9 }
+            }
+        };
     });
 
-    const dString = "M " + points.join(" L ");
-    pathElement.setAttribute('d', dString);
-    if (fillElement) fillElement.setAttribute('d', dString + ` L 0,${svgHeight} L ${svgWidth},${svgHeight} Z`);
-}
+    if (detailChart) detailChart.destroy();
 
-function drawGridLine(price, type, minGrid, maxGrid) {
-    const gridGroup = document.getElementById('grid-levels-group');
-    const labelContainer = document.getElementById('grid-labels-container');
-    let y = 400 - ((price - minGrid) / (maxGrid - minGrid) * 400);
-    const color = type === 'sell' ? '#ef5350' : '#26a69a';
-
-    if (gridGroup) {
-        const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-        line.setAttribute("x1", "0"); line.setAttribute("y1", y);
-        line.setAttribute("x2", "100%"); line.setAttribute("y2", y);
-        line.setAttribute("stroke", color); line.setAttribute("stroke-dasharray", "4,4");
-        line.setAttribute("opacity", "0.4");
-        gridGroup.appendChild(line);
-    }
-
-    if (labelContainer) {
-        const label = document.createElement("span");
-        label.className = `price-tag ${type}`;
-        label.style.top = `${(y / 400) * 100}%`;
-        label.innerText = price.toLocaleString();
-        labelContainer.appendChild(label);
-    }
-}
-
-function bindPerformanceStats() {
-    document.getElementById('capital-allocated').innerText = `$${activeGrid.stats.capital.toFixed(2)}`;
-    document.getElementById('vol-category').innerText = activeGrid.stats.volatility;
-    document.getElementById('grid-perf').innerText = activeGrid.stats.performance;
-    document.getElementById('trades-completed').innerText = activeGrid.stats.trades;
-    document.getElementById('avg-profit').innerText = `$${activeGrid.stats.avgProfit.toFixed(2)}`;
-    document.getElementById('grid-efficiency').innerText = activeGrid.stats.efficiency;
+    detailChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: data.chart_data.map((_, i) => i),
+            datasets: [{
+                data: data.chart_data,
+                borderColor: '#1A3263',
+                borderWidth: 2,
+                pointRadius: 0,
+                fill: false,
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                annotation: { annotations: annotations }
+            },
+            scales: {
+                y: { position: 'right', grid: { display: false } },
+                x: { display: false }
+            }
+        }
+    });
 }
