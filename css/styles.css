@@ -15,6 +15,30 @@ body { background-color: var(--bg-light); font-family: 'Segoe UI', Roboto, sans-
 nav { background: var(--primary); border-bottom: 8px solid var(--secondary); }
 .brand-logo img { max-height: 40px; margin-top: 8px; }
 
+/* Notification Badge Styling */
+.notif-badge {
+    position: absolute;
+    top: 10px;
+    right: -10px;
+    background-color: #ef5350; /* Red from your --danger variable */
+    color: white;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 0.65rem;
+    font-weight: bold;
+    min-width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white; /* Makes it pop against the nav background */
+}
+
+/* Hide badge if count is 0 */
+.notif-badge:empty, .notif-badge[data-count="0"] {
+    display: none;
+}
+
 /* Dashboard Cards */
 .card-soft { border-radius: 18px !important; box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important; border: none; }
 .balance-card { background: linear-gradient(135deg, #13263d 0%, #1a3263 100%); color: white; border-radius: 20px; }
