@@ -48,8 +48,8 @@ function renderPage(grid) {
     // 1. Update Header (Symbol, Price, and Limits)
     document.getElementById('coin-symbol').innerText = grid.symbol;
     document.getElementById('current-price-header').innerText = `$${data.current_price}`;
-    document.getElementById('upper-limit-label').innerText = data.range.upper;
-    document.getElementById('lower-limit-label').innerText = data.range.lower;
+    document.getElementById('upper-limit-label').innerText = formatSmartPrice(data.range.upper, data.current_price);
+    document.getElementById('lower-limit-label').innerText = formatSmartPrice(data.range.lower, data.current_price);
 
     // 2. Update Performance Insights
     document.getElementById('grid-perf').innerText = data.insights.avg_profit;

@@ -67,9 +67,9 @@ function renderDashboardList(grids, container) {
                 <div class="row mb-0 valign-wrapper">
                     <div class="col s7">
                         <span class="fw-bold blue-grey-text text-darken-4">${grid.symbol}</span>
-                        <span class="grey-text" style="font-size: 0.8rem; margin-left: 5px;">$${data.current_price || 0}</span>
+                        <span class="${getOneMinVariation(data.chart_data).colorClass}" style="font-size: 0.8rem; margin-left: 5px;">$${data.current_price || 0}</span>
                         <br>
-                        <span class="green-text" style="font-size: 0.75rem;">↑ 0.5% 24h</span>
+                        <span class="${getOneMinVariation(data.chart_data).colorClass}" style="font-size: 0.75rem;">${getOneMinVariation(data.chart_data).icon} ${getOneMinVariation(data.chart_data).text}</span>
                     </div>
                     <div class="col s5 right-align">
                         <span class="green-text fw-bold">+$${grid.pnl_24h || '0.00'}</span>
@@ -132,7 +132,7 @@ function renderStatusOverview(grids, container) {
 
                     <div class="row mb-5">
                         <div class="col s6">
-                            <span class="stat-label">Price:</span> <span class="fw-bold">$${data.current_price}</span>
+                            <span class="stat-label">Price:</span> <span class="fw-bold ${getOneMinVariation(data.chart_data).colorClass}">$${data.current_price}</span>
                         </div>
                         <div class="col s6 right-align">
                             <span class="score-badge">SCORE: ${grid.score}</span>
@@ -183,4 +183,28 @@ function formatSmartPrice(value, referencePrice) {
 
     // 3. Return the value formatted to that specific precision
     return num.toFixed(precision);
+}
+
+/**
+ * Calculates 1m variation based on the last two points of chart_data
+ * @param {Array} chartData - The array of prices from your JSON
+ * @returns {Object} - Returns the percentage string and the appropriate CSS class
+ */
+function getOneMinVariation(chartData) {
+    if (!chartData || chartData.length < 2) {
+        return { text: "0.00%", colorClass: "grey-text", icon: "" };
+    }
+
+    const current = chartData[chartData.length - 1];
+    const previous = chartData[chartData.length - 2];
+    
+    // Calculate percentage change
+    const change = ((current - previous) / previous) * 100;
+    const isPositive = change >= 0;
+    
+    return {
+        text: `${Math.abs(change).toFixed(2)}% 1m`,
+        colorClass: isPositive ? "green-text" : "red-text",
+        icon: isPositive ? "↑" : "↓"
+    };
 }
