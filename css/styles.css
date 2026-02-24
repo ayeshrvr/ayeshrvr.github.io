@@ -31,7 +31,7 @@ nav { background: var(--primary); border-bottom: 8px solid var(--secondary); }
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid white; /* Makes it pop against the nav background */
+    border: 1px solid white; /* Makes it pop against the nav background */
 }
 
 /* Hide badge if count is 0 */
@@ -982,4 +982,21 @@ input[type=range] + .thumb { background-color: var(--primary) !important; }
         transform: translateX(0);
         background-color: #ffffff;
     }
+}
+
+/* Styling for Unread Notifications */
+.unread-notif {
+    background-color: #f0f7ff !important; /* Very light blue tint */
+    border-left: 4px solid var(--secondary) !important;
+}
+
+/* Notification Types */
+.success-text { color: var(--success); }
+.warning-text { color: var(--neutral); }
+.error-text { color: var(--danger); }
+.info-text { color: var(--secondary); }
+
+/* Ensure the card content flows well on small screens */
+.card-content .valign-wrapper {
+    align-items: flex-start !important;
 }

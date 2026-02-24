@@ -38,9 +38,6 @@ var htmlText = '<div>'+
   '<li><a href="/pages/grid-status.html" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
       '<i class="material-icons"  style="height: 40px !important; line-height: 40px !important;">grid_on</i>Grid Overview</a>'+
   '</li>'+
-    '<li><a href="/pages/grid-details.html" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
-      '<i class="material-icons"  style="height: 40px !important; line-height: 40px !important;">assessment</i>Positions</a>'+
-  '</li>'+
   '<li><a href="/pages/trade-history.html" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
       '<i class="material-icons"  style="height: 40px !important; line-height: 40px !important;">history</i>Trade History</a>'+
   '</li>'+
@@ -49,6 +46,9 @@ var htmlText = '<div>'+
   '</li>'+
   '<li><a href="/pages/analytics.html" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
       '<i class="material-icons" style="height: 40px !important; line-height: 40px !important;">blur_on</i>Analytics</a>'+
+  '</li>'+
+     '<li><a href="/pages/notifications.html" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
+      '<i class="material-icons"  style="height: 40px !important; line-height: 40px !important;">notifications_none</i>Notifications</a>'+
   '</li>'+
   '<li><a href="/pages/logs.html" class="waves-effect" style="height: 40px !important; line-height: 40px !important;">'+
       '<i class="material-icons" style="height: 40px !important; line-height: 40px !important;">format_align_center</i>Logs</a>'+

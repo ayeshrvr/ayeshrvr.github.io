@@ -1,27 +1,36 @@
 /**
  * activeGrids.js - Multi-Page Edition
  */
-let supabaseClient;
-
 document.addEventListener('DOMContentLoaded', () => {
-    initGridSystem();
+    if (window.supabaseClient) {
+        initGridSystem();
+    } else {
+        window.addEventListener('supabaseReady', initGridSystem);
+    }
 });
 
 async function initGridSystem() {
-    if (typeof supabase !== 'undefined' && typeof SB_URL !== 'undefined') {
-        supabaseClient = supabase.createClient(SB_URL, SB_KEY);
-        await refreshGridData();
-        setupSubscription();
-    }
+    // 1. Use the globally initialized client
+    // 2. Call the correct functions (renamed to match the multi-page logic)
+    await refreshGridData(); 
+    setupSubscription();
 }
 
 async function refreshGridData() {
-    const { data, error } = await supabaseClient.from('active_grids').select('*');
-    if (!error) renderUI(data);
+    const { data, error } = await window.supabaseClient
+        .from('active_grids')
+        .select('*');
+    
+    if (error) {
+        console.error("Error fetching data:", error);
+        return;
+    }
+    
+    if (data) renderUI(data);
 }
 
 function setupSubscription() {
-    supabaseClient
+    window.supabaseClient
         .channel('grid_global_sync')
         .on('postgres_changes', { event: '*', schema: 'public', table: 'active_grids' }, () => {
             refreshGridData();
