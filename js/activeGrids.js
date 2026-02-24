@@ -144,7 +144,7 @@ function renderStatusOverview(grids, container) {
                     </div>
                     
                     <div class="row mb-0" style="font-size: 0.75rem; color: #757575;">
-                        <div class="col s4">Range: ${formatSmartPrice(data.range.lower)} - ${formatSmartPrice(data.range.upper)}</div>
+                        <div class="col s4">Range: ${formatSmartPrice(data.range.lower, data.current_price)} - ${formatSmartPrice(data.range.upper, data.current_price)}</div>
                         <div class="col s4 center-align">Orders: ${data.counters.buy_orders}B / ${data.counters.sell_orders}S</div>
                         <div class="col s4 right-align">Filled Today: ${data.counters.total_filled_today}</div>
                     </div>
@@ -153,19 +153,34 @@ function renderStatusOverview(grids, container) {
     }).join('');
 }
 
-function formatSmartPrice(value) {
+/**
+ * Formats a value to match the decimal precision of a reference price.
+ * @param {number|string} value - The price/amount to format (e.g., an open order price)
+ * @param {number|string} referencePrice - The benchmark price (e.g., current_price)
+ */
+function formatSmartPrice(value, referencePrice) {
     const num = Number(value);
-    
-    // If it's a whole number (like 1200), just show the number
-    if (Number.isInteger(num)) {
-        return num.toLocaleString(); // Adds commas, e.g., 1,200
+    const ref = Number(referencePrice);
+
+    if (isNaN(num)) return value;
+
+    // 1. Handle whole numbers (e.g., 1200)
+    if (Number.isInteger(num) && (ref && Number.isInteger(ref))) {
+        return num.toLocaleString(); 
     }
-    
-    // If it's a large price (> $100), 2 decimals is enough
-    if (num > 100) {
-        return num.toFixed(2);
+
+    // 2. Determine precision of the reference price
+    // We convert to string and count digits after the decimal point
+    const refString = ref.toString();
+    let precision = 0;
+    if (refString.includes('.')) {
+        precision = refString.split('.')[1].length;
+    } else if (ref > 100) {
+        precision = 2; // Default for high-value coins if no decimals found
+    } else {
+        precision = 5; // Default for low-value coins
     }
-    
-    // For small prices, show up to 5 decimals
-    return num.toFixed(5);
+
+    // 3. Return the value formatted to that specific precision
+    return num.toFixed(precision);
 }

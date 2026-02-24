@@ -68,6 +68,7 @@ function updateChart(data) {
     // Loop through the 8 open orders from the JSON
     data.open_orders.forEach((order, i) => {
         const isBuy = order.side === 'buy';
+        const formattedPrice = formatSmartPrice(order.price, data.current_price);
         annotations[`line${i}`] = {
             type: 'line',
             yMin: order.price,
@@ -77,7 +78,7 @@ function updateChart(data) {
             borderDash: [5, 5],
             label: {
                 display: true,
-                content: order.price,
+                content: `$${formattedPrice}`,
                 position: 'end',
                 backgroundColor: isBuy ? '#26a69a' : '#ef5350',
                 font: { size: 9 }
@@ -113,4 +114,36 @@ function updateChart(data) {
             }
         }
     });
+}
+
+/**
+ * Formats a value to match the decimal precision of a reference price.
+ * @param {number|string} value - The price/amount to format (e.g., an open order price)
+ * @param {number|string} referencePrice - The benchmark price (e.g., current_price)
+ */
+function formatSmartPrice(value, referencePrice) {
+    const num = Number(value);
+    const ref = Number(referencePrice);
+
+    if (isNaN(num)) return value;
+
+    // 1. Handle whole numbers (e.g., 1200)
+    if (Number.isInteger(num) && (ref && Number.isInteger(ref))) {
+        return num.toLocaleString(); 
+    }
+
+    // 2. Determine precision of the reference price
+    // We convert to string and count digits after the decimal point
+    const refString = ref.toString();
+    let precision = 0;
+    if (refString.includes('.')) {
+        precision = refString.split('.')[1].length;
+    } else if (ref > 100) {
+        precision = 2; // Default for high-value coins if no decimals found
+    } else {
+        precision = 5; // Default for low-value coins
+    }
+
+    // 3. Return the value formatted to that specific precision
+    return num.toFixed(precision);
 }
