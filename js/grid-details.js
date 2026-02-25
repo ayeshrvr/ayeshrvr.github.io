@@ -48,6 +48,7 @@ function renderPage(grid) {
     // 1. Update Header (Symbol, Price, and Limits)
     document.getElementById('coin-symbol').innerText = grid.symbol;
     document.getElementById('current-price-header').innerText = `$${data.current_price}`;
+    document.getElementById('current-price-header').className = getOneMinVariation(data.chart_data).colorClass;
     document.getElementById('upper-limit-label').innerText = formatSmartPrice(data.range.upper, data.current_price);
     document.getElementById('lower-limit-label').innerText = formatSmartPrice(data.range.lower, data.current_price);
 
@@ -146,4 +147,28 @@ function formatSmartPrice(value, referencePrice) {
 
     // 3. Return the value formatted to that specific precision
     return num.toFixed(precision);
+}
+
+/**
+ * Calculates 1m variation based on the last two points of chart_data
+ * @param {Array} chartData - The array of prices from your JSON
+ * @returns {Object} - Returns the percentage string and the appropriate CSS class
+ */
+function getOneMinVariation(chartData) {
+    if (!chartData || chartData.length < 2) {
+        return { text: "0.00%", colorClass: "grey-text", icon: "" };
+    }
+
+    const current = chartData[chartData.length - 1];
+    const previous = chartData[chartData.length - 2];
+    
+    // Calculate percentage change
+    const change = ((current - previous) / previous) * 100;
+    const isPositive = change >= 0;
+    
+    return {
+        text: `${Math.abs(change).toFixed(2)}% 1m`,
+        colorClass: isPositive ? "green-text" : "red-text",
+        icon: isPositive ? "↑" : "↓"
+    };
 }

@@ -68,3 +68,34 @@ self.addEventListener('activate', evt => {
 self.addEventListener('fetch', evt => {
   console.log('fetch event', evt);
 });
+
+// sw.js - Service Worker
+self.addEventListener('push', function(event) {
+    let data = { title: 'New Alert', body: 'Check your bot manager!' };
+    
+    if (event.data) {
+        data = event.data.json();
+    }
+
+    const options = {
+        body: data.body,
+        icon: '/img/icons/icon-192x192.png',
+        badge: '/img/icons/icon-72x72.png',
+        vibrate: [100, 50, 100],
+        data: {
+            url: '/notifications.html'
+        }
+    };
+
+    event.waitUntil(
+        self.registration.showNotification(data.title, options)
+    );
+});
+
+// Open the app when the notification is clicked
+self.addEventListener('notificationclick', function(event) {
+    event.notification.close();
+    event.waitUntil(
+        clients.openWindow(event.notification.data.url)
+    );
+});

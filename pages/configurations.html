@@ -24,9 +24,20 @@
     <nav class="z-depth-0">
         <div class="nav-wrapper container">
             <a href="/index.html" class="brand-logo left"><img src="/img/logo.png" alt="logo"></a>
-            <span class="right grey-text text-darken-1">
-                <i class="material-icons sidenav-trigger" style="cursor: pointer;" data-target="side-menu">menu</i>
-            </span>
+            
+            <!-- Notification Icon -->
+            <div class="right valign-wrapper" style="height: 100%;">
+                <a href="/pages/notifications.html">
+                    <div class="notification-wrapper" style="position: relative; margin-right: 20px; cursor: pointer;">
+                        <i class="material-icons grey-text text-darken-1">notifications</i>
+                        <span id="notification-badge" class="notif-badge"></span>
+                    </div>
+                </a>
+
+                <span class="right grey-text text-darken-1">
+                    <i class="material-icons sidenav-trigger" style="cursor: pointer;" data-target="side-menu">menu</i>
+                </span>
+            </div> 
         </div>
     </nav>
 
@@ -366,9 +377,11 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="text/javascript" src="/js/dbConnect.js"></script>
+    <script type="text/javascript" src="/js/notifications.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/ui.js"></script>
-    <script type="text/javascript" src="/js/dbConnect.js"></script>
     <script src="/js/navigation.js"></script>
     <script src="/js/loader.js"></script>
     <script src="/js/configurations.js"></script>

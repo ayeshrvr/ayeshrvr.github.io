@@ -10,6 +10,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+async function requestNotificationPermission() {
+    const permission = await Notification.requestPermission();
+    if (permission === 'granted') {
+        console.log('Notification permission granted.');
+        // In a production app, you would save the 'subscription' object to Supabase here
+    }
+}
+
 async function startNotificationLogic() {
     // 1. Always sync the badge count for the navbar
     await syncUnreadCount();
