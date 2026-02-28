@@ -64,9 +64,11 @@
             <div class="col s12">
                 <div class="card-panel white card-soft valign-wrapper" style="padding: 10px 15px; margin-top: 0;">
                     <span class="badge red white-text" style="position: static; margin-right: 15px; height: 20px; line-height: 20px;">NEWS</span>
-                    <marquee class="grey-text text-darken-2" style="font-weight: 500; font-size: 0.85rem;">
-                        BTC approaching major resistance at $68.5k • Volatility increasing in ETH/USDT • Fed meeting minutes expected at 14:00 UTC
-                    </marquee>
+                    <div class="news-container darken-4" style="padding: 5px 0; border-bottom: 1px solid #2c3e50;">
+                        <div id="news-marquee">
+                            <span class="grey-text center" style="display:block; width:100%;">Loading Market News...</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -141,6 +143,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script type="text/javascript" src="/js/dbConnect.js"></script>
+    <script type="text/javascript" src="/js/market_scanner.js"></script>
     <script type="text/javascript" src="/js/notifications.js"></script>
     <script src="/js/app.js"></script>
     <script src="/js/ui.js"></script>
