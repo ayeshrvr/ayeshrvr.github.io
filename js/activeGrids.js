@@ -39,12 +39,15 @@ function setupSubscription() {
 }
 
 function renderUI(grids) {
-    // 1. Handle Dashboard Summary
+    // 1. Calculate and update the top summary cards
+    updateSummaryStats(grids);
+
+    // 2. Handle Dashboard Summary
     const dashboardContainer = document.getElementById('active-grids-list');
     if (dashboardContainer) renderDashboardList(grids, dashboardContainer);
 
-    // 2. Handle Grid Status Overview
-    const statusContainer = document.getElementById('grid-status-container');
+    // 3. Handle Grid Status Overview
+    const statusContainer = document.getElementById('status-grid-container');
     if (statusContainer) renderStatusOverview(grids, statusContainer);
 }
 
@@ -151,6 +154,48 @@ function renderStatusOverview(grids, container) {
                 </div>
             </div>`;
     }).join('');
+}
+
+/**
+ * Calculates and updates Active Grids, Win Rate, and Total Fills
+ * Now handles empty states to reset UI to zero.
+ */
+function updateSummaryStats(grids) {
+    // 1. Default values if no grids exist
+    let activeCount = 0;
+    let totalFills = 0;
+    let avgWinRate = 0;
+
+    // 2. Only perform calculations if we actually have grid data
+    if (grids && grids.length > 0) {
+        activeCount = grids.length;
+
+        grids.forEach(grid => {
+            // Sum up fills from the bot's JSON counters
+            totalFills += (grid.grid_data?.counters?.total_filled_today || 0);
+            // Accumulate score for the win rate average
+            totalScore += parseFloat(grid.score) || 0;
+        });
+
+        avgWinRate = (totalScore / activeCount).toFixed(0);
+    }
+
+    // 3. Update the DOM elements in index.html
+    const labels = document.querySelectorAll('.stat-label');
+    
+    labels.forEach(label => {
+        const valueElement = label.nextElementSibling;
+        if (!valueElement) return;
+
+        // Reset or update based on the calculated values
+        if (label.innerText.includes('ACTIVE GRIDS')) {
+            valueElement.innerText = activeCount;
+        } else if (label.innerText.includes('WIN RATE')) {
+            valueElement.innerText = `${avgWinRate}%`;
+        } else if (label.innerText.includes('TOTAL FILLS')) {
+            valueElement.innerText = totalFills;
+        }
+    });
 }
 
 /**
