@@ -102,7 +102,7 @@ function renderStatusOverview(grids, container) {
             </div>`;
         return;
     }
-alert("test");
+
     container.innerHTML = grids.map(grid => {
         const data = grid.grid_data;
         
