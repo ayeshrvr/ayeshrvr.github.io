@@ -75,7 +75,7 @@ function renderDashboardList(grids, container) {
                         <span class="${getOneMinVariation(data.chart_data).colorClass}" style="font-size: 0.75rem;">${getOneMinVariation(data.chart_data).icon} ${getOneMinVariation(data.chart_data).text}</span>
                     </div>
                     <div class="col s5 right-align">
-                        <span class="green-text fw-bold">+$${grid.pnl_24h || '0.00'}</span>
+                        <span class="green-text fw-bold">+$${formatSmartPrice(grid.pnl_total, 0.00) || '0.00'}</span>
                         <br>
                         <span class="score-badge">SCORE: ${grid.score || 0}</span>
                     </div>
@@ -129,7 +129,7 @@ function renderStatusOverview(grids, container) {
                             <span class="status-pill status-active" style="margin-left: 10px;">Active</span>
                         </div>
                         <div class="col s6 right-align">
-                            <span class="pnl-text green-text">+$${grid.pnl_24h || '0.00'}</span>
+                            <span class="pnl-text green-text">+$${grid.pnl_total || '0.00'}</span>
                         </div>
                     </div>
 
