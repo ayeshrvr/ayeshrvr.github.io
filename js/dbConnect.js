@@ -7,12 +7,15 @@ const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJ
 // Initialization Logic
 if (typeof supabase !== 'undefined') {
     if (!window.supabaseClient) {
-        window.supabaseClient = supabase.createClient(SB_URL, SB_KEY);
-        console.log("Supabase Singleton Initialized");
-        
-        // Dispatch a global event so other scripts know they can start
+        // Explicitly pass the key here
+        window.supabaseClient = supabase.createClient(SB_URL, SB_KEY, {
+            auth: {
+                persistSession: false // Recommended for simple bot PWAs
+            }
+        });
+        console.log("Supabase Singleton Initialized with Key");
         window.dispatchEvent(new CustomEvent('supabaseReady'));
     }
 } else {
-    console.error("Supabase library not found!");
+    console.error("Supabase library not found! Check your CDN script tag.");
 }

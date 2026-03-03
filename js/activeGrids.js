@@ -47,7 +47,7 @@ function renderUI(grids) {
     if (dashboardContainer) renderDashboardList(grids, dashboardContainer);
 
     // 3. Handle Grid Status Overview
-    const statusContainer = document.getElementById('status-grid-container');
+    const statusContainer = document.getElementById('grid-status-container');
     if (statusContainer) renderStatusOverview(grids, statusContainer);
 }
 
@@ -102,7 +102,7 @@ function renderStatusOverview(grids, container) {
             </div>`;
         return;
     }
-
+alert("test");
     container.innerHTML = grids.map(grid => {
         const data = grid.grid_data;
         
@@ -165,6 +165,7 @@ function updateSummaryStats(grids) {
     let activeCount = 0;
     let totalFills = 0;
     let avgWinRate = 0;
+    let totalScore = 0; // For calculating average score (win rate)
 
     // 2. Only perform calculations if we actually have grid data
     if (grids && grids.length > 0) {
